@@ -21,13 +21,29 @@ odbcClose(conn)
 # gear width fill in type
 gearFillin <-
   rbind(
-    data.frame(model = "a * avg_oal + b",
+    data.frame(gear_model = "linear",
+               gear_coefficient = "avg_oal",
                benthis_met = c('OT_MIX_DMF_BEN', 'OT_MIX_CRU_DMF', 'OT_SPF')),
-    data.frame(model = "a * b ^ avg_kw",
+    data.frame(gear_model = "power",
+               gear_coefficient = "avg_oal",
                benthis_met = c('OT_CRU', 'OT_DMF', 'OT_MIX', 'OT_MIX_CRU',
                                'TBB_CRU', 'TBB_DMF', 'SDN_DMF')),
-    data.frame(model = "a * b ^ avg_oal",
+    data.frame(gear_model = "power",
+               gear_coefficient = "avg_kw",
                benthis_met = c('OT_MIX_DMF_PEL', 'TBB_MOL', 'DRB_MOL','SSC_DMF'))
+  )
+
+surfaceFillin <-
+  rbind(
+    data.frame(contact_model = "trawl_contact",
+               benthis_met = c('OT_CRU', 'OT_DMF', 'OT_MIX', 'OT_MIX_CRU',
+                              'TBB_CRU', 'TBB_DMF', 'OT_MIX_DMF_PEL', 'TBB_MOL',
+                              'DRB_MOL', 'OT_MIX_DMF_BEN', 'OT_MIX_CRU_DMF',
+                              'OT_SPF')),
+    data.frame(contact_model = "demersal_seine_contact",
+               benthis_met = 'SDN_DMF'),
+    data.frame(contact_model = "demersal_seine_contact",
+               benthis_met = 'SSC_DMF')
   )
 
 # join widths and lookup
@@ -36,7 +52,8 @@ gear_widths <-
   filter(!is.na(FirstFactor)) %>%
   rename(a = FirstFactor, b = SecondFactor) %>%
   select(benthis_met, subsurface_prop, gearWidth, a, b) %>%
-  right_join(gearFillin, by = c("benthis_met" = "benthis_met"))
+  right_join(gearFillin, by = c("benthis_met" = "benthis_met")) %>%
+  right_join(surfaceFillin, by = c("benthis_met" = "benthis_met"))
 
 # save data for use in package
 usethis::use_data(gear_widths, overwrite = TRUE)

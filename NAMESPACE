@@ -3,3 +3,7 @@
 export(csquare_area)
 export(csquare_lat)
 export(csquare_lon)
+export(demersal_seine_contact)
+export(linear)
+export(power)
+export(trawl_contact)

@@ -14,7 +14,7 @@
 #' csquare_lon("1501:370:370:1")
 #'
 #' @rdname csquare-functions
-#' @name csquare-functions
+#' @name csquare_utils
 NULL
 
 #' @rdname csquare-functions
