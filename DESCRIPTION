@@ -1,0 +1,16 @@
+Package: sfdSAR
+Title: Functions to calculate Swept area ratio and Surface and subsurface 
+       abrasion from VMS data
+Version: 0.0.0.9000
+Authors@R: 
+    c(person(given = "Colin", family = "Millar", role = c("aut", "cre"),
+             email = "colin.millar@ices.dk"),
+      person(given = "Carlos", family = "Pinto", role = "aut"))
+Description: Functions to calculate Swept area ratio and Surface and subsurface 
+             abrasion from VMS data.  The data is expected to conform to the
+             ICES WGSFD data call format.
+Encoding: UTF-8
+LazyData: true
+License: MIT + file LICENSE
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 6.1.0.9000
