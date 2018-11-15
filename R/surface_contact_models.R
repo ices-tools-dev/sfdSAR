@@ -25,12 +25,12 @@ trawl_contact <- function(fishing_hours, gear_width, fishing_speed) {
 
 #' @rdname surface-models
 #' @export
-demersal_seine_contact <- function(fishing_hours, gear_width, fishing_speed) {
-  (fishing_hours / 2.591234 * gear_width / (2 * pi))^2 * pi
+danish_seine_contact <- function(fishing_hours, gear_width, fishing_speed) {
+  fishing_hours / 2.591234 * gear_width^2 / pi / 4
 }
 
 #' @rdname surface-models
 #' @export
-demersal_seine_contact <- function(fishing_hours, gear_width, fishing_speed) {
-  (fishing_hours / 1.912500 * gear_width / (2 * pi))^2 * 1.5 * pi
+scottish_seine_contact <- function(fishing_hours, gear_width, fishing_speed) {
+  fishing_hours / 1.912500 * gear_width^2 / pi / 4 * 1.5
 }

@@ -25,11 +25,11 @@ gearFillin <-
                gear_coefficient = "avg_oal",
                benthis_met = c('OT_MIX_DMF_BEN', 'OT_MIX_CRU_DMF', 'OT_SPF')),
     data.frame(gear_model = "power",
-               gear_coefficient = "avg_oal",
+               gear_coefficient = "avg_kw",
                benthis_met = c('OT_CRU', 'OT_DMF', 'OT_MIX', 'OT_MIX_CRU',
                                'TBB_CRU', 'TBB_DMF', 'SDN_DMF')),
     data.frame(gear_model = "power",
-               gear_coefficient = "avg_kw",
+               gear_coefficient = "avg_oal",
                benthis_met = c('OT_MIX_DMF_PEL', 'TBB_MOL', 'DRB_MOL','SSC_DMF'))
   )
 
@@ -40,9 +40,9 @@ surfaceFillin <-
                               'TBB_CRU', 'TBB_DMF', 'OT_MIX_DMF_PEL', 'TBB_MOL',
                               'DRB_MOL', 'OT_MIX_DMF_BEN', 'OT_MIX_CRU_DMF',
                               'OT_SPF')),
-    data.frame(contact_model = "demersal_seine_contact",
+    data.frame(contact_model = "danish_seine_contact",
                benthis_met = 'SDN_DMF'),
-    data.frame(contact_model = "demersal_seine_contact",
+    data.frame(contact_model = "scottish_seine_contact",
                benthis_met = 'SSC_DMF')
   )
 

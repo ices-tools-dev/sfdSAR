@@ -3,14 +3,15 @@
 \name{surface_contact_models}
 \alias{surface_contact_models}
 \alias{trawl_contact}
-\alias{demersal_seine_contact}
+\alias{danish_seine_contact}
+\alias{scottish_seine_contact}
 \title{Surface contact models}
 \usage{
 trawl_contact(fishing_hours, gear_width, fishing_speed)
 
-demersal_seine_contact(fishing_hours, gear_width, fishing_speed)
+danish_seine_contact(fishing_hours, gear_width, fishing_speed)
 
-demersal_seine_contact(fishing_hours, gear_width, fishing_speed)
+scottish_seine_contact(fishing_hours, gear_width, fishing_speed)
 }
 \arguments{
 \item{a}{the a parameter for the model}
