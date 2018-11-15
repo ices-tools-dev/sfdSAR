@@ -44,13 +44,13 @@ csquare_lat <- function(csquare) {
 csquare_lon <- function(csquare) {
   C41 <- as.numeric(substring(csquare, 14, 14))
 	C38 <- as.numeric(substring(csquare, 1, 1))
-	E38 <- as.numeric(substring(csquare,3,4))
-	E39 <- as.numeric(substring(csquare,8,8))
-	E40 <- as.numeric(substring(csquare,12,12))
+	E38 <- as.numeric(substring(csquare,3, 4))
+	E39 <- as.numeric(substring(csquare,8, 8))
+	E40 <- as.numeric(substring(csquare,12, 12))
 
 	H41 <- (round((C41 - 1) / 2, 1) - floor((C41 - 1) / 2)) * 2
 
 	B41 <- 1 - 2 * round(C38, -1) / 10
 
-	(E38 * 10 + E39 + 40 * 0.1 + H41 * 0.05 + 0.025) * B41
+	(E38 * 10 + E39 + E40 * 0.1 + H41 * 0.05 + 0.025) * B41
 }

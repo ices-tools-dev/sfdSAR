@@ -16,11 +16,10 @@
 #' @name predict_surface_contact
 predict_surface_contact <- function(model, fishing_hours, gear_width,
                                     fishing_speed) {
-
   # apply the approprate model
   mods <- unique(model)
   mods <- mods[!is.na(mods)]
-  output <- rep(NA, nrow(data))
+  output <- rep(NA, length(model))
   for (mod in mods) {
     fun <- match.fun(mod)
     mwhich <- which(model == mod)
