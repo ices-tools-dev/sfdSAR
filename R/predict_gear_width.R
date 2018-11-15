@@ -13,6 +13,7 @@
 #' @examples
 #'
 #' @name predict_gear_width
+#' @export
 predict_gear_width <- function(model, coefficient, data) {
 
   # get coefficients

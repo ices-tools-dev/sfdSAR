@@ -14,6 +14,7 @@
 #' @examples
 #'
 #' @name predict_surface_contact
+#' @export
 predict_surface_contact <- function(model, fishing_hours, gear_width,
                                     fishing_speed) {
   # apply the approprate model
