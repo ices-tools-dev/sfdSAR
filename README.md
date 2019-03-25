@@ -1268,6 +1268,8 @@ vms$gearWidth_filled <-
     ))
 ```
 
+### Predicting surface contact
+
 finaly, surface contact is computed using the appropriate surface
 contact model, given by the `contact_model` feild, defined as:
 
@@ -1304,6 +1306,8 @@ vms$surface <-
 # calculate subsurface contact
 vms$subsurface <- vms$surface * vms$subsurface_prop * .01
 ```
+
+### Summarising accross months etc.
 
 Normally it is required to summarise the surface quantities, which can
 be done like this
