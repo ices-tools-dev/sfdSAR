@@ -37,3 +37,5 @@ rsconnect/
 .Rproj.user
 
 sfdSAR\.Rproj
+
+data-raw/vms\.rda

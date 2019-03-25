@@ -1,0 +1,49 @@
+#' @docType data
+#'
+#' @name test_vms
+#'
+#' @title Lookup table to aggregate metier level 6 gear groupings
+#'
+#' @description
+#' A table.
+#'
+#' @usage
+#' vms
+#'
+#' @format
+#'
+#' Data frame with containing 17 columns:
+#' \tabular{ll}{
+#'   \code{recordtype} \tab Metier level 6 gear code\cr
+#'   \code{country} \tab Benthis metier used to define bottom fishing pressure\cr
+#'   \code{year} \tab Metier level 5 gear codes\cr
+#'   \code{month} \tab Metier level 5 gear codes\cr
+#'   \code{c_square} \tab JNCC gear groupings\cr
+#'   \code{vessel_length_category} \tab Fishing category\cr
+#'   \code{gear_code} \tab Text description of the gear code\cr
+#'   \code{LE_MET_level6} \tab Fishing category used in ICES fishery overview reports\cr
+#'   \code{avg_fishing_speed} \tab description ...\cr
+#'   \code{fishing_hours} \tab description ...\cr
+#'   \code{avg_oal} \tab description ...\cr
+#'   \code{avg_kw} \tab description ...\cr
+#'   \code{kw_fishinghours} \tab description ...\cr
+#'   \code{totweight} \tab description ...\cr
+#'   \code{totvalue} \tab description ...\cr
+#'   \code{ICES_avg_fishing_speed} \tab description ...\cr
+#'   \code{avg_gearWidth} \tab description ...
+#' }
+#'
+#' @details
+#' Copmletely made up VMS data to allow SAR functions to be demonstrated.
+#'
+#' @source
+#' Reference to ices data call and format?
+#'
+#' @seealso
+#' \code{\link{sfdSAR-package}} gives an overview of the package.
+#'
+#'
+#' @examples
+#' head(test_vms)
+
+NA
