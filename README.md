@@ -23,23 +23,13 @@ which can then be summarised over years and gear groupings.
 The code below shows how the sfdSAR functions can be used to calculate
 swept area ratio (SAR)
 
-``` r
-library(dplyr)
-#> 
-#> Attaching package: 'dplyr'
-#> The following objects are masked from 'package:stats':
-#> 
-#>     filter, lag
-#> The following objects are masked from 'package:base':
-#> 
-#>     intersect, setdiff, setequal, union
-library(sfdSAR)
-#> 
-#> Attaching package: 'sfdSAR'
-#> The following object is masked from 'package:stats':
-#> 
-#>     power
+In the following examples the `dplyr` package is used to simplify the
+data processing
 
+    library(dplyr)
+    library(sfdSAR)
+
+``` r
 ## load sample vms data
 data(test_vms)
 

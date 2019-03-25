@@ -34,10 +34,19 @@ summarised over years and gear groupings.
 The code below shows how the sfdSAR functions can be used to calculate swept 
 area ratio (SAR)
 
-```{r example}
+In the following examples the `dplyr` package is used to simplify the data 
+processing
+```{r packages, echo=FALSE, message=FALSE, warning=FALSE}
 library(dplyr)
 library(sfdSAR)
+```
+```
+library(dplyr)
+library(sfdSAR)
+```
 
+
+```{r example}
 ## load sample vms data
 data(test_vms)
 
