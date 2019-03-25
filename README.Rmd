@@ -177,6 +177,9 @@ a single c_square.
 The above code can be applied to a larger dataset to covering a range of year, 
 fishing gears and c_squares.
 
+### All in one
+
+The steps described above are combined into one code block for convienience
 
 ```{r ref.label=c("join", "gearwidth", "fillin", "surface", "summary")}
 

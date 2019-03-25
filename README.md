@@ -1345,6 +1345,11 @@ each Fishing category in a single c\_square.
 The above code can be applied to a larger dataset to covering a range of
 year, fishing gears and c\_squares.
 
+### All in one
+
+The steps described above are combined into one code block for
+convienience
+
 ``` r
 # join widths and lookup
 aux_lookup <-
