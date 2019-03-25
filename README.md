@@ -1355,9 +1355,11 @@ aux_lookup <-
 vms <-
   aux_lookup %>%
   right_join(test_vms, by = c("LE_MET_level6", "LE_MET_level6"))
+
 # calculate the gear width model
 vms$gearWidth_model <-
   predict_gear_width(vms$gear_model, vms$gear_coefficient, vms)
+
 # do the fillin for gear width:
 # select provided average gear width, then modelled gear with, then benthis
 # average if no kw or aol supplied
@@ -1367,6 +1369,7 @@ vms$gearWidth_filled <-
       ifelse(!is.na(gearWidth_model), gearWidth_model / 1000,
         gearWidth)
     ))
+
 # calculate surface contact
 vms$surface <-
   predict_surface_contact(vms$contact_model,
@@ -1375,6 +1378,7 @@ vms$surface <-
                           vms$ICES_avg_fishing_speed)
 # calculate subsurface contact
 vms$subsurface <- vms$surface * vms$subsurface_prop * .01
+
 # compute summaries over groups
 output <-
   vms %>%

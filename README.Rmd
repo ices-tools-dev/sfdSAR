@@ -89,6 +89,7 @@ aux_lookup <-
 vms <-
   aux_lookup %>%
   right_join(test_vms, by = c("LE_MET_level6", "LE_MET_level6"))
+
 ```
 
 and the gear width model is applied using the helper function `predict_gear_width`
@@ -97,6 +98,7 @@ and the gear width model is applied using the helper function `predict_gear_widt
 # calculate the gear width model
 vms$gearWidth_model <-
   predict_gear_width(vms$gear_model, vms$gear_coefficient, vms)
+
 ```
 
 In general, if gearwdth is available, it is used.  If average overall vessel 
@@ -114,6 +116,7 @@ vms$gearWidth_filled <-
       ifelse(!is.na(gearWidth_model), gearWidth_model / 1000,
         gearWidth)
     ))
+
 ```
 
 finaly, surface contact is computed using the appropriate surface contact
@@ -137,6 +140,7 @@ vms$surface <-
                           vms$ICES_avg_fishing_speed)
 # calculate subsurface contact
 vms$subsurface <- vms$surface * vms$subsurface_prop * .01
+
 ```
 
 
