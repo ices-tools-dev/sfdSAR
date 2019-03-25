@@ -12,6 +12,9 @@
 #'
 #'
 #' @examples
+#' # compute surface contact for a trawl gear, fishing for 1 hour, with
+#' # a 85 metres trawl width, at 3 knots.
+#' predict_surface_contact("trawl_contact", 1, 85, 3)
 #'
 #' @name predict_surface_contact
 #' @export

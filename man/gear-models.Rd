@@ -15,8 +15,8 @@ power(a, b, x)
 
 \item{b}{the b parameter for the model}
 
-\item{x}{the covariate used in the model, avg_oal (average overall length),
-etc.}
+\item{x}{the covariate used in the model: avg_oal (average overall length)
+or avg_kw (average kilo-wats engine power)}
 }
 \value{
 A vector of predicted gear widths.
@@ -25,6 +25,6 @@ A vector of predicted gear widths.
 Predict the gear with of a fishing gear from its benthis classification.
 }
 \examples{
-oal_linear(1, 1, 1)
+linear(1, 1, 1)
 
 }

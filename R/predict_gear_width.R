@@ -1,6 +1,6 @@
-#' Calculate gear fill in
+#' Calculate gear width from vessel characteristics
 #'
-#' Predict gear width.
+#' Predict gear width using vessel length or engine size.
 #'
 #' @param model vector of characters defining a model
 #'                   (see ?linear or ?power)
@@ -11,7 +11,29 @@
 #'
 #'
 #' @examples
+#' # very simple example of how to apply this helper function
+#' predict_gear_width("power", "avg_aol", data.frame(a = 1, b = 1, avg_aol = 1))
 #'
+#' # use the dummy vms dataset
+#' data(test_vms)
+#'
+#' \dontrun{
+#' # join widths and lookup
+#' library(dplyr)
+#' aux_lookup <-
+#'   gear_widths %>%
+#'   right_join(metier_lookup, by = c("benthis_met" = "Benthis_metiers"))
+#'
+#' # add aux data to vms
+#' vms <-
+#'   aux_lookup %>%
+#'   right_join(test_vms, by = c("LE_MET_level6", "LE_MET_level6"))
+#'
+#' # calculate the gear width model
+#' vms$gearWidth_model <-
+#'   predict_gear_width(vms$gear_model, vms$gear_coefficient, vms)
+#'
+#' }
 #' @name predict_gear_width
 #' @export
 predict_gear_width <- function(model, coefficient, data) {

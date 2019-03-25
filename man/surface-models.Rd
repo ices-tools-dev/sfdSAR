@@ -14,20 +14,23 @@ danish_seine_contact(fishing_hours, gear_width, fishing_speed)
 scottish_seine_contact(fishing_hours, gear_width, fishing_speed)
 }
 \arguments{
-\item{a}{the a parameter for the model}
+\item{fishing_hours}{the number of hours of fishing}
 
-\item{b}{the b parameter for the model}
+\item{gear_width}{(average) gear width in metres}
 
-\item{x}{the covariate used in the model, avg_oal (average overall length),
-etc.}
+\item{fishing_speed}{(average) fishing speed in knots}
 }
 \value{
 A vector of predicted gear widths.
 }
 \description{
-Predict the surface contact of a fishing gear from its benthis classification.
+Predict the surface contact of a fishing gear
 }
 \examples{
-oal_linear(1, 1, 1)
+# compute surface contact for a trawl gear, fishing for 1 hour, with
+# a 85 metres trawl width, at 3 knots.
+trawl_contact(fishing_hours = 1,
+              gear_width = 85,
+              fishing_speed = 3)
 
 }

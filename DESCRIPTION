@@ -9,7 +9,7 @@ Authors@R:
 Description: Functions to calculate Swept area ratio and Surface and subsurface 
              abrasion from VMS data.  The data is expected to conform to the
              ICES WGSFD data call format.
-Suggests: dplyr
+Depends: R (>= 2.10)
 Encoding: UTF-8
 LazyData: true
 License: MIT + file LICENSE

@@ -4,13 +4,13 @@
 #'
 #' @param a the a parameter for the model
 #' @param b the b parameter for the model
-#' @param x the covariate used in the model, avg_oal (average overall length),
-#'          etc.
+#' @param x the covariate used in the model: avg_oal (average overall length)
+#'          or avg_kw (average kilo-wats engine power)
 #'
 #' @return A vector of predicted gear widths.
 #'
 #' @examples
-#' oal_linear(1, 1, 1)
+#' linear(1, 1, 1)
 #'
 #' @rdname gear-models
 #' @name gear_models

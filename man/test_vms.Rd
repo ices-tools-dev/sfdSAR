@@ -11,9 +11,9 @@
 \code{year} \tab Metier level 5 gear codes\cr
 \code{month} \tab Metier level 5 gear codes\cr
 \code{c_square} \tab JNCC gear groupings\cr
-\code{vessel_length_category} \tab Fishing category\cr
+\code{vessel_length_category} \tab Vessel length category\cr
 \code{gear_code} \tab Text description of the gear code\cr
-\code{LE_MET_level6} \tab Fishing category used in ICES fishery overview reports\cr
+\code{LE_MET_level6} \tab Metier level 6 gear code\cr
 \code{avg_fishing_speed} \tab description ...\cr
 \code{fishing_hours} \tab description ...\cr
 \code{avg_oal} \tab description ...\cr

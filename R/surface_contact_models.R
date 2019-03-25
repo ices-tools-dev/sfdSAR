@@ -1,16 +1,19 @@
 #' Surface contact models
 #'
-#' Predict the surface contact of a fishing gear from its benthis classification.
+#' Predict the surface contact of a fishing gear
 #'
-#' @param a the a parameter for the model
-#' @param b the b parameter for the model
-#' @param x the covariate used in the model, avg_oal (average overall length),
-#'          etc.
+#' @param fishing_hours the number of hours of fishing
+#' @param gear_width (average) gear width in metres
+#' @param fishing_speed (average) fishing speed in knots
 #'
 #' @return A vector of predicted gear widths.
 #'
 #' @examples
-#' oal_linear(1, 1, 1)
+#' # compute surface contact for a trawl gear, fishing for 1 hour, with
+#' # a 85 metres trawl width, at 3 knots.
+#' trawl_contact(fishing_hours = 1,
+#'               gear_width = 85,
+#'               fishing_speed = 3)
 #'
 #' @rdname surface-models
 #' @name surface_contact_models
