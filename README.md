@@ -1,6 +1,11 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
+[![Build
+Status](https://travis-ci.org/ices-tools-dev/sfdSAR.svg?branch=master)](https://travis-ci.org/ices-tools-dev/sfdSAR)
+
+[<img align="right" alt="ICES Logo" width="17%" height="17%" src="http://ices.dk/_layouts/15/1033/images/icesimg/iceslogo.png">](http://ices.dk)
+
 # sfdSAR
 
 The goal of sfdSAR is to make it easy to follow the procedure of
@@ -13,6 +18,28 @@ You can install the sfdSAR from GitHub using
 ``` r
 devtools::install_github("ices-tools-dev/sfdSAR")
 ```
+
+## Usage
+
+For a summary of the package:
+
+``` r
+library(sfdSAR)
+?sfdSAR
+```
+
+## References
+
+need to cite Benthis, WGSFD, Eigaard etc
+
+## Development
+
+sfdSAR is developed openly on
+[GitHub](https://github.com/ices-tools-dev/sfdSAR).
+
+Feel free to open an
+[issue](https://github.com/ices-tools-dev/sfdSAR/issues) there if you
+encounter problems or have suggestions for future versions.
 
 ## Example
 
