@@ -1,10 +1,21 @@
+---
+output: github_document
+---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
 # sfdSAR
 
-The goal of sfdSAR is to make it easy to follow the procedure of
-calculating swept area ratio of an area of seabed by a fishing gear.
+The goal of sfdSAR is to make it easy to follow the procedure of calculating swept
+area ratio of an area of seabed by a fishing gear.
 
 ## Installation
 
@@ -16,29 +27,16 @@ devtools::install_github("ices-tools-dev/sfdSAR")
 
 ## Example
 
-The functions in this package are intended for one purpose: to compute
-the swept area ratio (SAR) and the subsurface SAR of a fishing gear,
-which can then be summarised over years and gear groupings.
+The functions in this package are intended for one purpose: to compute the swept 
+area ratio (SAR) and the subsurface SAR of a fishing gear, which can then be 
+summarised over years and gear groupings.  
 
-The code below shows how the sfdSAR functions can be used to calculate
-swept area ratio (SAR)
+The code below shows how the sfdSAR functions can be used to calculate swept 
+area ratio (SAR)
 
-``` r
+```{r example}
 library(dplyr)
-#> 
-#> Attaching package: 'dplyr'
-#> The following objects are masked from 'package:stats':
-#> 
-#>     filter, lag
-#> The following objects are masked from 'package:base':
-#> 
-#>     intersect, setdiff, setequal, union
 library(sfdSAR)
-#> 
-#> Attaching package: 'sfdSAR'
-#> The following object is masked from 'package:stats':
-#> 
-#>     power
 
 ## load sample vms data
 data(test_vms)
@@ -97,19 +95,13 @@ output <-
   )
 
 output
-#> # A tibble: 3 x 8
-#>    year c_square Fishing_categor~ mw_fishinghours subsurface surface   lat
-#>   <dbl> <chr>    <chr>                      <dbl>      <dbl>   <dbl> <dbl>
-#> 1  2020 7400:36~ <NA>                       0.903       0        0    46.1
-#> 2  2020 7400:36~ Otter                     15.7         2.00    15.5  46.1
-#> 3  2020 7400:36~ Static                    10.8         0        0    46.1
-#> # ... with 1 more variable: lon <dbl>
 ```
 
-In this made up example, we have calculated the total MW fishing hours
-`mw_fishinghours`, subsurface swept area ratio (subsurface SAR)
-`subsurface` and surface swept area ratio (surface SAR) `surface`, for
-each Fishing category in a single c\_square.
+In this made up example, we have calculated the total MW fishing hours 
+`mw_fishinghours`, subsurface swept area ratio (subsurface SAR) `subsurface` and 
+surface swept area ratio (surface SAR) `surface`, for each Fishing category in 
+a single c_square.
 
-The above code can be applied to a larger dataset to covering a range of
-year, fishing gears and c\_squares.
+The above code can be applied to a larger dataset to covering a range of year, 
+fishing gears and c_squares.
+
