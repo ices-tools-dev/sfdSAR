@@ -1271,6 +1271,8 @@ vms$gearWidth_filled <-
 finaly, surface contact is computed using the appropriate surface
 contact model, given by the `contact_model` feild, defined as:
 
+`r cat("`r")
+
 ``` r
 sapply(unique(gear_widths$contact_model), function(x) body(get(x)))
 ```
@@ -1283,6 +1285,12 @@ $danish\_seine\_contact { fishing\_hours/2.591234 \* gear\_width^2/pi/4
 
 $scottish\_seine\_contact { fishing\_hours/1.9125 \* gear\_width^2/pi/4
 \* 1.5 }
+
+```` r
+cat("```")
+````
+
+\`\`\`
 
 The helper function `predict_surface_contact` computes the surface
 contact (usage shown below). The feild `subsurface_prop` which has come

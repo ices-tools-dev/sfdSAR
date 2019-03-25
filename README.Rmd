@@ -120,7 +120,9 @@ finaly, surface contact is computed using the appropriate surface contact
 model, given by the `contact_model` feild, defined as:
 
 ```{r contact_model, results='asis'}
+cat("```r")
 sapply(unique(gear_widths$contact_model), function(x) body(get(x)))
+cat("```")
 ```
 
 The helper function `predict_surface_contact` computes the surface contact 
