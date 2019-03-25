@@ -24,15 +24,1210 @@ The code below shows how the sfdSAR functions can be used to calculate
 swept area ratio (SAR)
 
 In the following examples the `dplyr` package is used to simplify the
-data processing
+data processing and a made up vms toy vms dataset (`test_vms`) will be
+used
 
     library(dplyr)
     library(sfdSAR)
+    ## load sample vms data
+    data(test_vms)
+
+### Predicting gear widths
+
+The calculation of gear with is done using the data in the `gear_widths`
+table:
 
 ``` r
-## load sample vms data
-data(test_vms)
+data(gear_widths)
+kableExtra::kable(gear_widths)
+```
 
+<table>
+
+<thead>
+
+<tr>
+
+<th style="text-align:left;">
+
+benthis\_met
+
+</th>
+
+<th style="text-align:right;">
+
+subsurface\_prop
+
+</th>
+
+<th style="text-align:right;">
+
+gearWidth
+
+</th>
+
+<th style="text-align:right;">
+
+a
+
+</th>
+
+<th style="text-align:right;">
+
+b
+
+</th>
+
+<th style="text-align:left;">
+
+gear\_model
+
+</th>
+
+<th style="text-align:left;">
+
+gear\_coefficient
+
+</th>
+
+<th style="text-align:left;">
+
+contact\_model
+
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td style="text-align:left;">
+
+OT\_CRU
+
+</td>
+
+<td style="text-align:right;">
+
+32.1
+
+</td>
+
+<td style="text-align:right;">
+
+0.0789228
+
+</td>
+
+<td style="text-align:right;">
+
+5.1039
+
+</td>
+
+<td style="text-align:right;">
+
+0.4690
+
+</td>
+
+<td style="text-align:left;">
+
+power
+
+</td>
+
+<td style="text-align:left;">
+
+avg\_kw
+
+</td>
+
+<td style="text-align:left;">
+
+trawl\_contact
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+OT\_DMF
+
+</td>
+
+<td style="text-align:right;">
+
+7.8
+
+</td>
+
+<td style="text-align:right;">
+
+0.1054698
+
+</td>
+
+<td style="text-align:right;">
+
+9.6054
+
+</td>
+
+<td style="text-align:right;">
+
+0.4337
+
+</td>
+
+<td style="text-align:left;">
+
+power
+
+</td>
+
+<td style="text-align:left;">
+
+avg\_kw
+
+</td>
+
+<td style="text-align:left;">
+
+trawl\_contact
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+OT\_MIX
+
+</td>
+
+<td style="text-align:right;">
+
+14.7
+
+</td>
+
+<td style="text-align:right;">
+
+0.0613659
+
+</td>
+
+<td style="text-align:right;">
+
+10.6608
+
+</td>
+
+<td style="text-align:right;">
+
+0.2921
+
+</td>
+
+<td style="text-align:left;">
+
+power
+
+</td>
+
+<td style="text-align:left;">
+
+avg\_kw
+
+</td>
+
+<td style="text-align:left;">
+
+trawl\_contact
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+OT\_MIX\_CRU
+
+</td>
+
+<td style="text-align:right;">
+
+29.2
+
+</td>
+
+<td style="text-align:right;">
+
+0.1051172
+
+</td>
+
+<td style="text-align:right;">
+
+37.5272
+
+</td>
+
+<td style="text-align:right;">
+
+0.1490
+
+</td>
+
+<td style="text-align:left;">
+
+power
+
+</td>
+
+<td style="text-align:left;">
+
+avg\_kw
+
+</td>
+
+<td style="text-align:left;">
+
+trawl\_contact
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+TBB\_CRU
+
+</td>
+
+<td style="text-align:right;">
+
+52.2
+
+</td>
+
+<td style="text-align:right;">
+
+0.0171507
+
+</td>
+
+<td style="text-align:right;">
+
+1.4812
+
+</td>
+
+<td style="text-align:right;">
+
+0.4578
+
+</td>
+
+<td style="text-align:left;">
+
+power
+
+</td>
+
+<td style="text-align:left;">
+
+avg\_kw
+
+</td>
+
+<td style="text-align:left;">
+
+trawl\_contact
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+TBB\_DMF
+
+</td>
+
+<td style="text-align:right;">
+
+100.0
+
+</td>
+
+<td style="text-align:right;">
+
+0.0202760
+
+</td>
+
+<td style="text-align:right;">
+
+0.6601
+
+</td>
+
+<td style="text-align:right;">
+
+0.5078
+
+</td>
+
+<td style="text-align:left;">
+
+power
+
+</td>
+
+<td style="text-align:left;">
+
+avg\_kw
+
+</td>
+
+<td style="text-align:left;">
+
+trawl\_contact
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+OT\_MIX\_DMF\_PEL
+
+</td>
+
+<td style="text-align:right;">
+
+22.0
+
+</td>
+
+<td style="text-align:right;">
+
+0.0762053
+
+</td>
+
+<td style="text-align:right;">
+
+6.6371
+
+</td>
+
+<td style="text-align:right;">
+
+0.7706
+
+</td>
+
+<td style="text-align:left;">
+
+power
+
+</td>
+
+<td style="text-align:left;">
+
+avg\_oal
+
+</td>
+
+<td style="text-align:left;">
+
+trawl\_contact
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+TBB\_MOL
+
+</td>
+
+<td style="text-align:right;">
+
+100.0
+
+</td>
+
+<td style="text-align:right;">
+
+0.0049306
+
+</td>
+
+<td style="text-align:right;">
+
+0.9530
+
+</td>
+
+<td style="text-align:right;">
+
+0.7094
+
+</td>
+
+<td style="text-align:left;">
+
+power
+
+</td>
+
+<td style="text-align:left;">
+
+avg\_oal
+
+</td>
+
+<td style="text-align:left;">
+
+trawl\_contact
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+DRB\_MOL
+
+</td>
+
+<td style="text-align:right;">
+
+100.0
+
+</td>
+
+<td style="text-align:right;">
+
+0.0169653
+
+</td>
+
+<td style="text-align:right;">
+
+0.3142
+
+</td>
+
+<td style="text-align:right;">
+
+1.2454
+
+</td>
+
+<td style="text-align:left;">
+
+power
+
+</td>
+
+<td style="text-align:left;">
+
+avg\_oal
+
+</td>
+
+<td style="text-align:left;">
+
+trawl\_contact
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+OT\_MIX\_DMF\_BEN
+
+</td>
+
+<td style="text-align:right;">
+
+8.6
+
+</td>
+
+<td style="text-align:right;">
+
+0.1563055
+
+</td>
+
+<td style="text-align:right;">
+
+3.2141
+
+</td>
+
+<td style="text-align:right;">
+
+77.9812
+
+</td>
+
+<td style="text-align:left;">
+
+linear
+
+</td>
+
+<td style="text-align:left;">
+
+avg\_oal
+
+</td>
+
+<td style="text-align:left;">
+
+trawl\_contact
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+OT\_MIX\_CRU\_DMF
+
+</td>
+
+<td style="text-align:right;">
+
+22.9
+
+</td>
+
+<td style="text-align:right;">
+
+0.1139591
+
+</td>
+
+<td style="text-align:right;">
+
+3.9273
+
+</td>
+
+<td style="text-align:right;">
+
+35.8254
+
+</td>
+
+<td style="text-align:left;">
+
+linear
+
+</td>
+
+<td style="text-align:left;">
+
+avg\_oal
+
+</td>
+
+<td style="text-align:left;">
+
+trawl\_contact
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+OT\_SPF
+
+</td>
+
+<td style="text-align:right;">
+
+2.8
+
+</td>
+
+<td style="text-align:right;">
+
+0.1015789
+
+</td>
+
+<td style="text-align:right;">
+
+0.9652
+
+</td>
+
+<td style="text-align:right;">
+
+68.3890
+
+</td>
+
+<td style="text-align:left;">
+
+linear
+
+</td>
+
+<td style="text-align:left;">
+
+avg\_oal
+
+</td>
+
+<td style="text-align:left;">
+
+trawl\_contact
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+SDN\_DMF
+
+</td>
+
+<td style="text-align:right;">
+
+0.0
+
+</td>
+
+<td style="text-align:right;">
+
+6.5366439
+
+</td>
+
+<td style="text-align:right;">
+
+1948.8347
+
+</td>
+
+<td style="text-align:right;">
+
+0.2363
+
+</td>
+
+<td style="text-align:left;">
+
+power
+
+</td>
+
+<td style="text-align:left;">
+
+avg\_kw
+
+</td>
+
+<td style="text-align:left;">
+
+danish\_seine\_contact
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+SSC\_DMF
+
+</td>
+
+<td style="text-align:right;">
+
+5.0
+
+</td>
+
+<td style="text-align:right;">
+
+6.4542120
+
+</td>
+
+<td style="text-align:right;">
+
+4461.2700
+
+</td>
+
+<td style="text-align:right;">
+
+0.1176
+
+</td>
+
+<td style="text-align:left;">
+
+power
+
+</td>
+
+<td style="text-align:left;">
+
+avg\_oal
+
+</td>
+
+<td style="text-align:left;">
+
+scottish\_seine\_contact
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+This table comes from (citation required), subsequently modified by
+(citation required). And contains, for each benthis gear group, the
+proportion of the gear contact that also affects the subsurface, the
+estimated average gear width, and the coeffients and covariates of the
+surface contact model which relates the gear width, properties of the
+vessel (kw or overall length) to bottom contact.
+
+In order to use this data a lookup table is required linking Metier
+level 6 codes to the benthis gear groupings listed above. The lookup
+table is given in the `metier_lookup` dataset and contains other gear
+groupings used in ICES outputs.
+
+``` r
+data(metier_lookup)
+kableExtra::kable(head(metier_lookup))
+```
+
+<table>
+
+<thead>
+
+<tr>
+
+<th style="text-align:left;">
+
+LE\_MET\_level6
+
+</th>
+
+<th style="text-align:left;">
+
+Benthis\_metiers
+
+</th>
+
+<th style="text-align:left;">
+
+Metier\_level5
+
+</th>
+
+<th style="text-align:left;">
+
+Metier\_level4
+
+</th>
+
+<th style="text-align:left;">
+
+JNCC\_grouping
+
+</th>
+
+<th style="text-align:left;">
+
+Fishing\_category
+
+</th>
+
+<th style="text-align:left;">
+
+Fishing\_category\_FO
+
+</th>
+
+<th style="text-align:left;">
+
+Description
+
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td style="text-align:left;">
+
+FPO\_FWS\_110-156\_0\_0
+
+</td>
+
+<td style="text-align:left;">
+
+NA
+
+</td>
+
+<td style="text-align:left;">
+
+FPO\_FWS
+
+</td>
+
+<td style="text-align:left;">
+
+FPO
+
+</td>
+
+<td style="text-align:left;">
+
+NA
+
+</td>
+
+<td style="text-align:left;">
+
+Static
+
+</td>
+
+<td style="text-align:left;">
+
+Static
+
+</td>
+
+<td style="text-align:left;">
+
+Pot
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+FPO\_FWS\_31-49\_0\_0
+
+</td>
+
+<td style="text-align:left;">
+
+NA
+
+</td>
+
+<td style="text-align:left;">
+
+FPO\_FWS
+
+</td>
+
+<td style="text-align:left;">
+
+FPO
+
+</td>
+
+<td style="text-align:left;">
+
+NA
+
+</td>
+
+<td style="text-align:left;">
+
+Static
+
+</td>
+
+<td style="text-align:left;">
+
+Static
+
+</td>
+
+<td style="text-align:left;">
+
+Pot
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+FPO\_FWS\_\>0\_0\_0
+
+</td>
+
+<td style="text-align:left;">
+
+NA
+
+</td>
+
+<td style="text-align:left;">
+
+FPO\_FWS
+
+</td>
+
+<td style="text-align:left;">
+
+FPO
+
+</td>
+
+<td style="text-align:left;">
+
+NA
+
+</td>
+
+<td style="text-align:left;">
+
+Static
+
+</td>
+
+<td style="text-align:left;">
+
+Static
+
+</td>
+
+<td style="text-align:left;">
+
+Pot
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+FPO\_MCF\_0-0\_0\_0
+
+</td>
+
+<td style="text-align:left;">
+
+NA
+
+</td>
+
+<td style="text-align:left;">
+
+FPO\_MCF
+
+</td>
+
+<td style="text-align:left;">
+
+FPO
+
+</td>
+
+<td style="text-align:left;">
+
+NA
+
+</td>
+
+<td style="text-align:left;">
+
+Static
+
+</td>
+
+<td style="text-align:left;">
+
+Static
+
+</td>
+
+<td style="text-align:left;">
+
+Pot
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+FPO\_MOL\_0-0\_0\_0
+
+</td>
+
+<td style="text-align:left;">
+
+NA
+
+</td>
+
+<td style="text-align:left;">
+
+FPO\_MOL
+
+</td>
+
+<td style="text-align:left;">
+
+FPO
+
+</td>
+
+<td style="text-align:left;">
+
+NA
+
+</td>
+
+<td style="text-align:left;">
+
+Static
+
+</td>
+
+<td style="text-align:left;">
+
+Static
+
+</td>
+
+<td style="text-align:left;">
+
+Pot
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+FPO\_MOL\_0\_0\_0
+
+</td>
+
+<td style="text-align:left;">
+
+NA
+
+</td>
+
+<td style="text-align:left;">
+
+FPO\_MOL
+
+</td>
+
+<td style="text-align:left;">
+
+FPO
+
+</td>
+
+<td style="text-align:left;">
+
+NA
+
+</td>
+
+<td style="text-align:left;">
+
+Static
+
+</td>
+
+<td style="text-align:left;">
+
+Static
+
+</td>
+
+<td style="text-align:left;">
+
+Pot
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+``` r
 # load lookup tables
 data(gear_widths)
 data(metier_lookup)

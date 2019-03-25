@@ -35,21 +35,49 @@ The code below shows how the sfdSAR functions can be used to calculate swept
 area ratio (SAR)
 
 In the following examples the `dplyr` package is used to simplify the data 
-processing
+processing and a made up vms toy vms dataset (`test_vms`) will be used
 ```{r packages, echo=FALSE, message=FALSE, warning=FALSE}
 library(dplyr)
 library(sfdSAR)
+data(test_vms)
 ```
 ```
 library(dplyr)
 library(sfdSAR)
+## load sample vms data
+data(test_vms)
+```
+
+### Predicting gear widths
+
+The calculation of gear with is done using the data in the `gear_widths` table:
+
+```{r gear_info, results="asis"}
+data(gear_widths)
+kableExtra::kable(gear_widths)
+```
+
+This table comes from (citation required), subsequently modified by (citation 
+required).  And contains, for each benthis gear group, the proportion of the gear
+contact that also affects the subsurface, the estimated average gear width,
+and the coeffients and covariates of the surface contact model which relates
+the gear width, properties of the vessel (kw or overall length) to 
+bottom contact.
+
+In order to use this data a lookup table is required linking Metier level 6 
+codes to the benthis gear groupings listed above.  The lookup table is given in
+the `metier_lookup` dataset and contains other gear groupings used in ICES
+outputs.
+
+```{r metier_lookup, results='asis'}
+data(metier_lookup)
+kableExtra::kable(head(metier_lookup))
 ```
 
 
-```{r example}
-## load sample vms data
-data(test_vms)
 
+
+```{r example}
 # load lookup tables
 data(gear_widths)
 data(metier_lookup)
