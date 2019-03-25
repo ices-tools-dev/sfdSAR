@@ -1227,11 +1227,10 @@ Pot
 
 </table>
 
-``` r
-# load lookup tables
-data(gear_widths)
-data(metier_lookup)
+Linking the gearwidths and contact model information is done with the
+following two lines
 
+``` r
 # join widths and lookup
 aux_lookup <-
   gear_widths %>%
@@ -1241,11 +1240,23 @@ aux_lookup <-
 vms <-
   aux_lookup %>%
   right_join(test_vms, by = c("LE_MET_level6", "LE_MET_level6"))
+```
 
+and the gear width model is applied using the helper function
+`predict_gear_width`
+
+``` r
 # calculate the gear width model
 vms$gearWidth_model <-
   predict_gear_width(vms$gear_model, vms$gear_coefficient, vms)
+```
 
+In general, if gearwdth is available, it is used. If average overall
+vessel length (oal) or average vessel power (kW) is available then the
+gear width model is used. FInally if none of these are avaiable an
+average gear width is applied. The following code implements this
+
+``` r
 # do the fillin for gear width:
 # select provided average gear width, then modelled gear with, then benthis
 # average if no kw or aol supplied
@@ -1255,14 +1266,44 @@ vms$gearWidth_filled <-
       ifelse(!is.na(gearWidth_model), gearWidth_model / 1000,
         gearWidth)
     ))
+```
 
+finaly, surface contact is computed using the appropriate surface
+contact model, given by the `contact_model` feild, defined as:
+
+``` r
+sapply(unique(gear_widths$contact_model), function(x) body(get(x)))
+```
+
+$trawl\_contact { fishing\_hours \* gear\_width \* fishing\_speed \*
+1.852 }
+
+$danish\_seine\_contact { fishing\_hours/2.591234 \* gear\_width^2/pi/4
+}
+
+$scottish\_seine\_contact { fishing\_hours/1.9125 \* gear\_width^2/pi/4
+\* 1.5 }
+
+The helper function `predict_surface_contact` computes the surface
+contact (usage shown below). The feild `subsurface_prop` which has come
+from the `gear_width` dataset can be used to compute subsurface contact
+from the surface contact.
+
+``` r
 # calculate surface contact
 vms$surface <-
   predict_surface_contact(vms$contact_model,
                           vms$fishing_hours,
                           vms$gearWidth_filled,
                           vms$ICES_avg_fishing_speed)
+# calculate subsurface contact
+vms$subsurface <- vms$surface * vms$subsurface_prop * .01
+```
 
+Normally it is required to summarise the surface quantities, which can
+be done like this
+
+``` r
 # compute summaries over groups
 output <-
   vms %>%
@@ -1272,7 +1313,7 @@ output <-
     group_by(year, c_square, Fishing_category_FO) %>%
     summarise(
       mw_fishinghours = sum(mw_fishinghours, na.rm = TRUE),
-      subsurface = sum(surface * subsurface_prop * .01, na.rm = TRUE),
+      subsurface = sum(subsurface, na.rm = TRUE),
       surface = sum(surface, na.rm = TRUE)
     ) %>%
   ungroup %>%
@@ -1298,3 +1339,61 @@ each Fishing category in a single c\_square.
 
 The above code can be applied to a larger dataset to covering a range of
 year, fishing gears and c\_squares.
+
+``` r
+# join widths and lookup
+aux_lookup <-
+  gear_widths %>%
+  right_join(metier_lookup, by = c("benthis_met" = "Benthis_metiers"))
+
+# add aux data to vms
+vms <-
+  aux_lookup %>%
+  right_join(test_vms, by = c("LE_MET_level6", "LE_MET_level6"))
+# calculate the gear width model
+vms$gearWidth_model <-
+  predict_gear_width(vms$gear_model, vms$gear_coefficient, vms)
+# do the fillin for gear width:
+# select provided average gear width, then modelled gear with, then benthis
+# average if no kw or aol supplied
+vms$gearWidth_filled <-
+  with(vms,
+    ifelse(!is.na(avg_gearWidth), avg_gearWidth / 1000,
+      ifelse(!is.na(gearWidth_model), gearWidth_model / 1000,
+        gearWidth)
+    ))
+# calculate surface contact
+vms$surface <-
+  predict_surface_contact(vms$contact_model,
+                          vms$fishing_hours,
+                          vms$gearWidth_filled,
+                          vms$ICES_avg_fishing_speed)
+# calculate subsurface contact
+vms$subsurface <- vms$surface * vms$subsurface_prop * .01
+# compute summaries over groups
+output <-
+  vms %>%
+    mutate(
+      mw_fishinghours = kw_fishinghours / 1000
+    ) %>%
+    group_by(year, c_square, Fishing_category_FO) %>%
+    summarise(
+      mw_fishinghours = sum(mw_fishinghours, na.rm = TRUE),
+      subsurface = sum(subsurface, na.rm = TRUE),
+      surface = sum(surface, na.rm = TRUE)
+    ) %>%
+  ungroup %>%
+  mutate(
+    lat = sfdSAR::csquare_lat(c_square),
+    lon = sfdSAR::csquare_lon(c_square)
+  )
+
+output
+#> # A tibble: 3 x 8
+#>    year c_square Fishing_categor~ mw_fishinghours subsurface surface   lat
+#>   <dbl> <chr>    <chr>                      <dbl>      <dbl>   <dbl> <dbl>
+#> 1  2020 7400:36~ <NA>                       0.903       0        0    46.1
+#> 2  2020 7400:36~ Otter                     15.7         2.00    15.5  46.1
+#> 3  2020 7400:36~ Static                    10.8         0        0    46.1
+#> # ... with 1 more variable: lon <dbl>
+```
