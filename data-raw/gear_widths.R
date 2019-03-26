@@ -55,5 +55,8 @@ gear_widths <-
   right_join(gearFillin, by = c("benthis_met" = "benthis_met")) %>%
   right_join(surfaceFillin, by = c("benthis_met" = "benthis_met"))
 
+# write out for comparison puroposes
+icesTAF::write.taf(gear_widths, dir = "data-raw")
+
 # save data for use in package
 usethis::use_data(gear_widths, overwrite = TRUE)

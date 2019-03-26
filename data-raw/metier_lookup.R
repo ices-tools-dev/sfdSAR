@@ -16,5 +16,8 @@ metier_lookup <-
   filter(Fishing_category != "Fishing_category")
 
 
+# write out for comparison puroposes
+icesTAF::write.taf(metier_lookup, dir = "data-raw")
+
 # save data for use in package
 usethis::use_data(metier_lookup, overwrite = TRUE)

@@ -1,0 +1,15 @@
+benthis_met,subsurface_prop,gearWidth,a,b,gear_model,gear_coefficient,contact_model
+OT_CRU,32.1,0.0789227529598627,5.1039,0.469,power,avg_kw,trawl_contact
+OT_DMF,7.8,0.105469844457146,9.6054,0.4337,power,avg_kw,trawl_contact
+OT_MIX,14.7,0.0613658709712345,10.6608,0.2921,power,avg_kw,trawl_contact
+OT_MIX_CRU,29.2,0.105117186878306,37.5272,0.149,power,avg_kw,trawl_contact
+TBB_CRU,52.2,0.0171506813949843,1.4812,0.4578,power,avg_kw,trawl_contact
+TBB_DMF,100,0.0202760293974626,0.6601,0.5078,power,avg_kw,trawl_contact
+OT_MIX_DMF_PEL,22,0.0762052720952612,6.6371,0.7706,power,avg_oal,trawl_contact
+TBB_MOL,100,0.00493059313096151,0.953,0.7094,power,avg_oal,trawl_contact
+DRB_MOL,100,0.0169653127021458,0.3142,1.2454,power,avg_oal,trawl_contact
+OT_MIX_DMF_BEN,8.6,0.156305525738048,3.2141,77.9812,linear,avg_oal,trawl_contact
+OT_MIX_CRU_DMF,22.9,0.11395914914364,3.9273,35.8254,linear,avg_oal,trawl_contact
+OT_SPF,2.8,0.101578945045984,0.9652,68.389,linear,avg_oal,trawl_contact
+SDN_DMF,0,6.53664387674273,1948.8347,0.2363,power,avg_kw,danish_seine_contact
+SSC_DMF,5,6.45421201429503,4461.27,0.1176,power,avg_oal,scottish_seine_contact
