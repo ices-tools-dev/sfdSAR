@@ -81,9 +81,10 @@ The main steps in the data processing are
     2016, p 69), note here speed is in knots and requires to be
     converted to km per hour:
       - Trawl : hours x width x speed x 1.82
-      - Danish seine : hours / 2.591234 x (width<sup>2\<\>) / (4 \&pi)
-      - Scottish seine : hours / 1.9125 x (1.5 x width<sup>2\<\>) / (4
-        \&pi)
+      - Danish seine : hours / 2.591234 x (width<sup>2</sup>) / (4
+        &\#960)
+      - Scottish seine : hours / 1.9125 x (1.5 x width<sup>2</sup>) / (4
+        &\#960)
 3.  Accumulate across gears for each year to produce annual totals of SA
     by c-square and gear category, and finally average over years within
     gear category and c-square.
