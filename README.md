@@ -1400,6 +1400,9 @@ sa <-
     lat = csquare_lat(c_square),
     lon = csquare_lon(c_square)
   )
+```
+
+``` r
 sa
 #> # A tibble: 3 x 8
 #>    year c_square Fishing_categor~ mw_fishinghours subsurface surface   lat
@@ -1420,6 +1423,7 @@ second grouping section computes averages for each `c_square` over all
 years in the dataset.
 
 ``` r
+# compute swept area ratio per year and c_square then average over years
 sar <-
   sa %>%
     mutate(
@@ -1500,12 +1504,27 @@ sa <-
     lat = csquare_lat(c_square),
     lon = csquare_lon(c_square)
   )
-sa
-#> # A tibble: 3 x 8
-#>    year c_square Fishing_categor~ mw_fishinghours subsurface surface   lat
-#>   <dbl> <chr>    <chr>                      <dbl>      <dbl>   <dbl> <dbl>
-#> 1  2020 7400:36~ <NA>                       0.903       0        0    46.1
-#> 2  2020 7400:36~ Otter                     15.7         2.00    15.5  46.1
-#> 3  2020 7400:36~ Static                    10.8         0        0    46.1
-#> # ... with 1 more variable: lon <dbl>
+
+# compute swept area ratio per year and c_square then average over years
+sar <-
+  sa %>%
+    mutate(
+      area = csquare_area(c_square)
+    ) %>%
+    group_by(c_square, year) %>%
+      summarise(
+        surface_sar = sum(surface / area, na.rm = TRUE),
+        subsurface_sar = sum(subsurface / area, na.rm = TRUE)
+      ) %>%
+    ungroup() %>%
+    group_by(c_square) %>%
+    summarise(
+      surface_sar = mean(surface_sar, na.rm = TRUE),
+      subsurface_sar = mean(subsurface_sar, na.rm = TRUE)
+    )
+sar
+#> # A tibble: 1 x 3
+#>   c_square       surface_sar subsurface_sar
+#>   <chr>                <dbl>          <dbl>
+#> 1 7400:361:206:4       0.721         0.0934
 ```

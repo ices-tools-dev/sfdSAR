@@ -235,6 +235,10 @@ sa <-
     lat = csquare_lat(c_square),
     lon = csquare_lon(c_square)
   )
+
+```
+
+```{r sa}
 sa
 ```
 
@@ -247,6 +251,7 @@ grouping is taking place over `c_square` the summation in the first
 section computes averages for each `c_square` over all years in the dataset.
 
 ```{r sar}
+# compute swept area ratio per year and c_square then average over years
 sar <-
   sa %>%
     mutate(
@@ -274,6 +279,6 @@ This code can be applied to a larger dataset to covering a range of years,
 fishing gears and c_squares.
 
 
-```{r ref.label=c("join", "gearwidth", "fillin", "surface", "summary")}
+```{r ref.label=c("join", "gearwidth", "fillin", "surface", "summary", "sar")}
 
 ```
