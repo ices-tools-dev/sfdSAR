@@ -41,21 +41,21 @@ library(sfdSAR)
 ## References
 
 
-ICES 2015. Report of the Working Group on Spatial Fisheries Data (WGSFD), 8–12 
+ICES 2015. Report of the Working Group on Spatial Fisheries Data (WGSFD), 8–12
 June 2015, ICES Headquarters, Copenhagen, Denmark. ICES CM 2015/SSGEPI:18. 150pp
 
 ICES 2016. Interim Report of the Working Group on Spatial Fisheries Data (WGSFD),
 17–20 May 2016, Brest, France. ICES CM 2016/SSGEPI:18. 244 pp
 
-Eigaard OR, Bastardie F, Breen M, et al. (2016) Estimating seabed pressure from 
-demersal trawls, seines, and dredges based on gear design and dimensions. ICES 
+Eigaard OR, Bastardie F, Breen M, et al. (2016) Estimating seabed pressure from
+demersal trawls, seines, and dredges based on gear design and dimensions. ICES
 Journal of Marine Science, 73:27‐43
 
-Church N.J., Carter A.J., Tobin D., Edwards D., Eassom A., Cameron A., Johnson 
-G.E., Robson, L.M. & Webb K.E. (2016) JNCC Recommended Pressure Mapping 
-Methodology 1. Abrasion: Methods paper for creating a geo-data layer for the 
-pressure ‘Physical Damage (Reversible Change) - Penetration and/or disturbance 
-of the substrate below the surface of the seabed, including abrasion’. JNCC 
+Church N.J., Carter A.J., Tobin D., Edwards D., Eassom A., Cameron A., Johnson
+G.E., Robson, L.M. & Webb K.E. (2016) JNCC Recommended Pressure Mapping
+Methodology 1. Abrasion: Methods paper for creating a geo-data layer for the
+pressure ‘Physical Damage (Reversible Change) - Penetration and/or disturbance
+of the substrate below the surface of the seabed, including abrasion’. JNCC
 report No. 515, JNCC, Peterborough
 
 Development
@@ -71,37 +71,37 @@ encounter problems or have suggestions for future versions.
 
 ## Example
 
-The functions in this package are intended for one purpose: to compute the swept 
-area ratio (SAR) and the subsurface SAR of a fishing gear, which can then be 
-summarised over years and gear groupings.  
+The functions in this package are intended for one purpose: to compute the swept
+area ratio (SAR) and the subsurface SAR of a fishing gear, which can then be
+summarised over years and gear groupings.
 
-Swept Area Ratio (SAR) is computed using the algorithm described below. The main 
+Swept Area Ratio (SAR) is computed using the algorithm described below. The main
 steps in the data processing are
 
 1. Determine the gear width of the VMS record according to:
    - Where average gear widths are supplied these are used.
-   - For VMS records with missing gear widths but that have supplied average 
-      vessel characteristics (i.e. average overall vessel length or average KW 
-      engine power): use the model described in (Eigaard et al., 2016) to 
+   - For VMS records with missing gear widths but that have supplied average
+      vessel characteristics (i.e. average overall vessel length or average KW
+      engine power): use the model described in (Eigaard et al., 2016) to
       provide an estimate of gear width
-   - For VMS records with missing gear widths and missing vessel 
+   - For VMS records with missing gear widths and missing vessel
       characteristics use a fill-in value provided by ICES (2015) based on a
       review by the JNCC or on the BENTHIS survey (Eigaard et al. 2016).
-1. Estimate swept area based on gear type, fishing hours (hours), fishing speed 
+1. Estimate swept area based on gear type, fishing hours (hours), fishing speed
    (speed) and gear width (width) for each record (ICES, 2016, p 69), note here
    speed is in knots and requires to be converted to km per hour:
    - Trawl          : hours x width x speed x 1.82
-   - Danish seine   : hours / 2.591234 x (width<sup>2<\sup>) / (4 &pi) 
+   - Danish seine   : hours / 2.591234 x (width<sup>2<\sup>) / (4 &pi)
    - Scottish seine : hours / 1.9125 x  (1.5 x width<sup>2<\sup>) / (4 &pi)
-1. Accumulate across gears for each year to produce annual totals of SA by 
-   c-square and gear category, and finally average over years within gear 
+1. Accumulate across gears for each year to produce annual totals of SA by
+   c-square and gear category, and finally average over years within gear
    category and c-square.
 1. Calculate SAR values by scaling by the area of the c-squares
 
-The code below shows how the sfdSAR functions can be used to calculate swept 
+The code below shows how the sfdSAR functions can be used to calculate swept
 area ratio (SAR)
 
-In the following examples the `dplyr` package is used to simplify the data 
+In the following examples the `dplyr` package is used to simplify the data
 processing and a made up vms toy vms dataset (`test_vms`) will be used
 ```{r packages, echo=FALSE, message=FALSE, warning=FALSE}
 library(dplyr)
@@ -124,14 +124,14 @@ data(gear_widths)
 kableExtra::kable(gear_widths)
 ```
 
-This table comes from Eigaard et al. (2016), with additions from ICES (2015).  
+This table comes from Eigaard et al. (2016), with additions from ICES (2015).
 And contains, for each benthis gear group, the proportion of the gear
 contact that also affects the subsurface, the estimated average gear width,
 and the coeffients and covariates of the surface contact model which relates
-the gear width, properties of the vessel (kw or overall length) to 
+the gear width, properties of the vessel (kw or overall length) to
 bottom contact.
 
-In order to use this data a lookup table is required linking Metier level 6 
+In order to use this data a lookup table is required linking Metier level 6
 codes to the benthis gear groupings listed above.  The lookup table is given in
 the `metier_lookup` dataset and contains other gear groupings used in ICES
 outputs and was initially developed by ICES (2015).
@@ -168,9 +168,9 @@ vms$gearWidth_model <-
 
 ```
 
-In general, if gearwdth is available, it is used.  If average overall vessel 
+In general, if gearwdth is available, it is used.  If average overall vessel
 length (oal) or average vessel power (kW) is available then the gear width
-model is used.  FInally if none of these are avaiable an average gear width is 
+model is used.  FInally if none of these are avaiable an average gear width is
 applied.  The following code implements this
 
 ```{r fillin}
@@ -195,7 +195,7 @@ model, given by the `contact_model` feild, defined as:
 sapply(unique(gear_widths$contact_model), function(x) body(get(x)))
 ```
 
-The helper function `predict_surface_contact` computes the surface contact 
+The helper function `predict_surface_contact` computes the surface contact
 (usage shown below).  The feild `subsurface_prop` which has come from the
 `gear_width` dataset can be used to compute subsurface contact from the surface
 contact.
@@ -218,8 +218,8 @@ Normally it is required to summarise the surface quantities, which can be done
 like this
 
 ```{r summary}
-# compute summaries over groups
-output <-
+# compute summaries of swept area over groups
+sa <-
   vms %>%
     mutate(
       mw_fishinghours = kw_fishinghours / 1000
@@ -232,24 +232,47 @@ output <-
     ) %>%
   ungroup %>%
   mutate(
-    lat = sfdSAR::csquare_lat(c_square),
-    lon = sfdSAR::csquare_lon(c_square)
+    lat = csquare_lat(c_square),
+    lon = csquare_lon(c_square)
   )
-
-output
+sa
 ```
 
-In this made up example, we have calculated the total MW fishing hours 
-`mw_fishinghours`, subsurface swept area ratio (subsurface SAR) `subsurface` and 
-surface swept area ratio (surface SAR) `surface`, for each Fishing category in 
-a single c_square.
+### Computing Swept Area Ratio (SAR)
 
-The above code can be applied to a larger dataset to covering a range of year, 
-fishing gears and c_squares.
+In the code below, SAR is calculated for each year, then averaged over years,
+resulting in a dataset of averarage SAR per c_square.  Note that, because
+grouping is taking place over `c_square` the summation in the first
+`group_by` section is equivalent to `sum(surface) / area`.  The second grouping
+section computes averages for each `c_square` over all years in the dataset.
+
+```{r sar}
+sar <-
+  sa %>%
+    mutate(
+      area = csquare_area(c_square)
+    ) %>%
+    group_by(c_square, year) %>%
+      summarise(
+        surface_sar = sum(surface / area, na.rm = TRUE),
+        subsurface_sar = sum(subsurface / area, na.rm = TRUE)
+      ) %>%
+    ungroup() %>%
+    group_by(c_square) %>%
+    summarise(
+      surface_sar = mean(surface_sar, na.rm = TRUE),
+      subsurface_sar = mean(subsurface_sar, na.rm = TRUE)
+    )
+sar
+```
+
 
 ### All in one
 
-The steps described above are combined into one code block for convienience
+The steps described above are combined into one code block for convienience.
+This code can be applied to a larger dataset to covering a range of years,
+fishing gears and c_squares.
+
 
 ```{r ref.label=c("join", "gearwidth", "fillin", "surface", "summary")}
 

@@ -904,12 +904,11 @@ scottish\_seine\_contact
 </table>
 
 This table comes from Eigaard et al. (2016), with additions from ICES
-(2015).  
-And contains, for each benthis gear group, the proportion of the gear
-contact that also affects the subsurface, the estimated average gear
-width, and the coeffients and covariates of the surface contact model
-which relates the gear width, properties of the vessel (kw or overall
-length) to bottom contact.
+(2015). And contains, for each benthis gear group, the proportion of the
+gear contact that also affects the subsurface, the estimated average
+gear width, and the coeffients and covariates of the surface contact
+model which relates the gear width, properties of the vessel (kw or
+overall length) to bottom contact.
 
 In order to use this data a lookup table is required linking Metier
 level 6 codes to the benthis gear groupings listed above. The lookup
@@ -1384,8 +1383,8 @@ Normally it is required to summarise the surface quantities, which can
 be done like this
 
 ``` r
-# compute summaries over groups
-output <-
+# compute summaries of swept area over groups
+sa <-
   vms %>%
     mutate(
       mw_fishinghours = kw_fishinghours / 1000
@@ -1398,11 +1397,10 @@ output <-
     ) %>%
   ungroup %>%
   mutate(
-    lat = sfdSAR::csquare_lat(c_square),
-    lon = sfdSAR::csquare_lon(c_square)
+    lat = csquare_lat(c_square),
+    lon = csquare_lon(c_square)
   )
-
-output
+sa
 #> # A tibble: 3 x 8
 #>    year c_square Fishing_categor~ mw_fishinghours subsurface surface   lat
 #>   <dbl> <chr>    <chr>                      <dbl>      <dbl>   <dbl> <dbl>
@@ -1412,18 +1410,44 @@ output
 #> # ... with 1 more variable: lon <dbl>
 ```
 
-In this made up example, we have calculated the total MW fishing hours
-`mw_fishinghours`, subsurface swept area ratio (subsurface SAR)
-`subsurface` and surface swept area ratio (surface SAR) `surface`, for
-each Fishing category in a single c\_square.
+### Computing Swept Area Ratio (SAR)
 
-The above code can be applied to a larger dataset to covering a range of
-year, fishing gears and c\_squares.
+In the code below, SAR is calculated for each year, then averaged over
+years, resulting in a dataset of averarage SAR per c\_square. Note that,
+because grouping is taking place over `c_square` the summation in the
+first `group_by` section is equivalent to `sum(surface) / area`. The
+second grouping section computes averages for each `c_square` over all
+years in the dataset.
+
+``` r
+sar <-
+  sa %>%
+    mutate(
+      area = csquare_area(c_square)
+    ) %>%
+    group_by(c_square, year) %>%
+      summarise(
+        surface_sar = sum(surface / area, na.rm = TRUE),
+        subsurface_sar = sum(subsurface / area, na.rm = TRUE)
+      ) %>%
+    ungroup() %>%
+    group_by(c_square) %>%
+    summarise(
+      surface_sar = mean(surface_sar, na.rm = TRUE),
+      subsurface_sar = mean(subsurface_sar, na.rm = TRUE)
+    )
+sar
+#> # A tibble: 1 x 3
+#>   c_square       surface_sar subsurface_sar
+#>   <chr>                <dbl>          <dbl>
+#> 1 7400:361:206:4       0.721         0.0934
+```
 
 ### All in one
 
 The steps described above are combined into one code block for
-convienience
+convienience. This code can be applied to a larger dataset to covering a
+range of years, fishing gears and c\_squares.
 
 ``` r
 # join widths and lookup
@@ -1459,8 +1483,8 @@ vms$surface <-
 # calculate subsurface contact
 vms$subsurface <- vms$surface * vms$subsurface_prop * .01
 
-# compute summaries over groups
-output <-
+# compute summaries of swept area over groups
+sa <-
   vms %>%
     mutate(
       mw_fishinghours = kw_fishinghours / 1000
@@ -1473,11 +1497,10 @@ output <-
     ) %>%
   ungroup %>%
   mutate(
-    lat = sfdSAR::csquare_lat(c_square),
-    lon = sfdSAR::csquare_lon(c_square)
+    lat = csquare_lat(c_square),
+    lon = csquare_lon(c_square)
   )
-
-output
+sa
 #> # A tibble: 3 x 8
 #>    year c_square Fishing_categor~ mw_fishinghours subsurface surface   lat
 #>   <dbl> <chr>    <chr>                      <dbl>      <dbl>   <dbl> <dbl>
