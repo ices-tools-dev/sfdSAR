@@ -30,7 +30,23 @@ library(sfdSAR)
 
 ## References
 
-need to cite Benthis, WGSFD, Eigaard etc
+ICES 2015. Report of the Working Group on Spatial Fisheries Data
+(WGSFD), 8–12 June 2015, ICES Headquarters, Copenhagen, Denmark. ICES CM
+2015/SSGEPI:18. 150pp
+
+ICES 2016. Interim Report of the Working Group on Spatial Fisheries Data
+(WGSFD), 17–20 May 2016, Brest, France. ICES CM 2016/SSGEPI:18. 244 pp
+
+Eigaard OR, Bastardie F, Breen M, et al. (2016) Estimating seabed
+pressure from demersal trawls, seines, and dredges based on gear design
+and dimensions. ICES Journal of Marine Science, 73:27‐43
+
+Church N.J., Carter A.J., Tobin D., Edwards D., Eassom A., Cameron A.,
+Johnson G.E., Robson, L.M. & Webb K.E. (2016) JNCC Recommended Pressure
+Mapping Methodology 1. Abrasion: Methods paper for creating a geo-data
+layer for the pressure ‘Physical Damage (Reversible Change) -
+Penetration and/or disturbance of the substrate below the surface of the
+seabed, including abrasion’. JNCC report No. 515, JNCC, Peterborough
 
 ## Development
 
@@ -47,6 +63,36 @@ The functions in this package are intended for one purpose: to compute
 the swept area ratio (SAR) and the subsurface SAR of a fishing gear,
 which can then be summarised over years and gear groupings.
 
+Swept Area Ratio (SAR) is computed using the algorithm described below.
+The main steps in the data processing are
+
+1.  Determine the gear width of the VMS record according to:
+2.  Where average gear widths are supplied these are used.
+3.  For VMS records with missing gear widths but that have supplied
+    average vessel characteristics (i.e. average overall vessel length
+    or average KW engine power): use the model described in (Eigaard et
+    al., 2016) to provide an estimate of gear width
+4.  For VMS records with missing gear widths and missing vessel
+    characteristics use a fill-in value provided by ICES (2015) based on
+    a review by the JNCC or on the BENTHIS survey (Eigaard et al. 2016).
+5.  Estimate swept area based on gear type, fishing hours (hours),
+    fishing speed (speed) and gear width (width) for each record (ICES,
+    2016, p 69), note here speed is in knots and requires to be
+    converted to km per hour:
+
+<!-- end list -->
+
+  - Trawl : hours x width x speed x 1.82
+  - Danish seine : hours / 2.591234 x (width^2) / (4 )
+  - Scottish seine : hours / 1.9125 x (1.5 x width^2) / (4 )
+
+<!-- end list -->
+
+3.  Accumulate across gears for each year to produce annual totals of SA
+    by c-square and gear category, and finally average over years within
+    gear category and c-square.
+4.  Calculate SAR values by scaling by the area of the c-squares
+
 The code below shows how the sfdSAR functions can be used to calculate
 swept area ratio (SAR)
 
@@ -59,7 +105,7 @@ used
     ## load sample vms data
     data(test_vms)
 
-### Predicting gear widths
+### 1\. Determine gear widths
 
 The calculation of gear with is done using the data in the `gear_widths`
 table:
@@ -861,17 +907,19 @@ scottish\_seine\_contact
 
 </table>
 
-This table comes from (citation required), subsequently modified by
-(citation required). And contains, for each benthis gear group, the
-proportion of the gear contact that also affects the subsurface, the
-estimated average gear width, and the coeffients and covariates of the
-surface contact model which relates the gear width, properties of the
-vessel (kw or overall length) to bottom contact.
+This table comes from Eigaard et al. (2016), with additions from ICES
+(2015).  
+And contains, for each benthis gear group, the proportion of the gear
+contact that also affects the subsurface, the estimated average gear
+width, and the coeffients and covariates of the surface contact model
+which relates the gear width, properties of the vessel (kw or overall
+length) to bottom contact.
 
 In order to use this data a lookup table is required linking Metier
 level 6 codes to the benthis gear groupings listed above. The lookup
 table is given in the `metier_lookup` dataset and contains other gear
-groupings used in ICES outputs.
+groupings used in ICES outputs and was initially developed by ICES
+(2015).
 
 ``` r
 data(metier_lookup)
