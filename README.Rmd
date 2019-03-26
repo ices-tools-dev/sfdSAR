@@ -79,24 +79,24 @@ Swept Area Ratio (SAR) is computed using the algorithm described below. The main
 steps in the data processing are
 
 1. Determine the gear width of the VMS record according to:
-  1. Where average gear widths are supplied these are used.
-  2. For VMS records with missing gear widths but that have supplied average 
+   1. Where average gear widths are supplied these are used.
+   1. For VMS records with missing gear widths but that have supplied average 
       vessel characteristics (i.e. average overall vessel length or average KW 
       engine power): use the model described in (Eigaard et al., 2016) to 
       provide an estimate of gear width
-  3. For VMS records with missing gear widths and missing vessel 
+   1. For VMS records with missing gear widths and missing vessel 
       characteristics use a fill-in value provided by ICES (2015) based on a
       review by the JNCC or on the BENTHIS survey (Eigaard et al. 2016).
-2. Estimate swept area based on gear type, fishing hours (hours), fishing speed 
+1. Estimate swept area based on gear type, fishing hours (hours), fishing speed 
    (speed) and gear width (width) for each record (ICES, 2016, p 69), note here
    speed is in knots and requires to be converted to km per hour:
-  - Trawl          : hours x width x speed x 1.82
-  - Danish seine   : hours / 2.591234 x (width^2) / (4 \pi) 
-  - Scottish seine : hours / 1.9125 x  (1.5 x width^2) / (4 \pi)
-3. Accumulate across gears for each year to produce annual totals of SA by 
+   - Trawl          : hours x width x speed x 1.82
+   - Danish seine   : hours / 2.591234 x (width^2) / (4 \pi) 
+   - Scottish seine : hours / 1.9125 x  (1.5 x width^2) / (4 \pi)
+1. Accumulate across gears for each year to produce annual totals of SA by 
    c-square and gear category, and finally average over years within gear 
    category and c-square.
-4. Calculate SAR values by scaling by the area of the c-squares
+1. Calculate SAR values by scaling by the area of the c-squares
 
 The code below shows how the sfdSAR functions can be used to calculate swept 
 area ratio (SAR)
