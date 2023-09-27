@@ -6,14 +6,14 @@
 \alias{power}
 \title{Gear width models}
 \usage{
-linear(a, b, x)
+linear(firstFactor, secondFactor, x)
 
-power(a, b, x)
+power(firstFactor, secondFactor, x)
 }
 \arguments{
-\item{a}{the a parameter for the model}
+\item{firstFactor}{the 'first' parameter for the model}
 
-\item{b}{the b parameter for the model}
+\item{secondFactor}{the 'second' parameter for the model}
 
 \item{x}{the covariate used in the model: avg_oal (average overall length)
 or avg_kw (average kilo-wats engine power)}

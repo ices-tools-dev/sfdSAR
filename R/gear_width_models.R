@@ -2,8 +2,8 @@
 #'
 #' Predict the gear with of a fishing gear from its benthis classification.
 #'
-#' @param a the a parameter for the model
-#' @param b the b parameter for the model
+#' @param firstFactor the 'first' parameter for the model
+#' @param secondFactor the 'second' parameter for the model
 #' @param x the covariate used in the model: avg_oal (average overall length)
 #'          or avg_kw (average kilo-wats engine power)
 #'
@@ -18,13 +18,13 @@ NULL
 
 #' @rdname gear-models
 #' @export
-linear <- function(a, b, x) {
-  a * x + b
+linear <- function(firstFactor, secondFactor, x) {
+  firstFactor * x + secondFactor
 }
 
 #' @rdname gear-models
 #' @export
-power <- function(a, b, x) {
-  a * x ^ b
+power <- function(firstFactor, secondFactor, x) {
+  firstFactor * x^secondFactor
   #exp(log(a) + b * log(x)) ...
 }

@@ -23,10 +23,10 @@ area ratio of an area of seabed by a fishing gear.
 
 ## Installation
 
-You can install the sfdSAR from GitHub using
+You can install the sfdSAR using
 
 ```r
-devtools::install_github("ices-tools-dev/sfdSAR")
+install.packages("sfdSAR", repos = "https://ices-tools-prod.r-universe.dev")
 ```
 
 ## Usage
@@ -41,21 +41,21 @@ library(sfdSAR)
 ## References
 
 
-ICES 2015. Report of the Working Group on Spatial Fisheries Data (WGSFD), 8–12
+ICES 2015. Report of the Working Group on Spatial Fisheries Data (WGSFD), 8-12
 June 2015, ICES Headquarters, Copenhagen, Denmark. ICES CM 2015/SSGEPI:18. 150pp
 
 ICES 2016. Interim Report of the Working Group on Spatial Fisheries Data (WGSFD),
-17–20 May 2016, Brest, France. ICES CM 2016/SSGEPI:18. 244 pp
+17-20 May 2016, Brest, France. ICES CM 2016/SSGEPI:18. 244 pp
 
 Eigaard OR, Bastardie F, Breen M, et al. (2016) Estimating seabed pressure from
 demersal trawls, seines, and dredges based on gear design and dimensions. ICES
-Journal of Marine Science, 73:27‐43
+Journal of Marine Science, 73:27-43
 
 Church N.J., Carter A.J., Tobin D., Edwards D., Eassom A., Cameron A., Johnson
 G.E., Robson, L.M. & Webb K.E. (2016) JNCC Recommended Pressure Mapping
 Methodology 1. Abrasion: Methods paper for creating a geo-data layer for the
-pressure ‘Physical Damage (Reversible Change) - Penetration and/or disturbance
-of the substrate below the surface of the seabed, including abrasion’. JNCC
+pressure 'Physical Damage (Reversible Change) - Penetration and/or disturbance
+of the substrate below the surface of the seabed, including abrasion'. JNCC
 report No. 515, JNCC, Peterborough
 
 Development
@@ -79,23 +79,23 @@ Swept Area Ratio (SAR) is computed using the algorithm described below. The main
 steps in the data processing are
 
 1. Determine the gear width of the VMS record according to:
-   - Where average gear widths are supplied these are used.
-   - For VMS records with missing gear widths but that have supplied average
+    - Where average gear widths are supplied these are used.
+    - For VMS records with missing gear widths but that have supplied average
       vessel characteristics (i.e. average overall vessel length or average KW
       engine power): use the model described in (Eigaard et al., 2016) to
       provide an estimate of gear width
-   - For VMS records with missing gear widths and missing vessel
+    - For VMS records with missing gear widths and missing vessel
       characteristics use a fill-in value provided by ICES (2015) based on a
       review by the JNCC or on the BENTHIS survey (Eigaard et al. 2016).
 1. Estimate swept area based on gear type, fishing hours (hours), fishing speed
-   (speed) and gear width (width) for each record (ICES, 2016, p 69), note here
-   speed is in knots and requires to be converted to km per hour:
-   - Trawl          : hours x width x speed x 1.82
-   - Danish seine   : hours / 2.591234 x (width<sup>2</sup>) / (4 &#960;)
-   - Scottish seine : hours / 1.9125 x  (1.5 x width<sup>2</sup>) / (4 &#960;)
+    (speed) and gear width (width) for each record (ICES, 2016, p 69), note here
+    speed is in knots and requires to be converted to km per hour:
+    - Trawl          : hours x width x speed x 1.82
+    - Danish seine   : hours / 2.591234 x (width<sup>2</sup>) / (4 &#960;)
+    - Scottish seine : hours / 1.9125 x  (1.5 x width<sup>2</sup>) / (4 &#960;)
 1. Accumulate across gears for each year to produce annual totals of SA by
-   c-square and gear category, and finally average over years within gear
-   category and c-square.
+    c-square and gear category, and finally average over years within gear
+    category and c-square.
 1. Calculate SAR values by scaling by the area of the c-squares
 
 The code below shows how the sfdSAR functions can be used to calculate swept
@@ -117,10 +117,11 @@ data(test_vms)
 
 ### 1. Determine gear widths
 
-The calculation of gear with is done using the data in the `gear_widths` table:
+The calculation of gear with is done using the data in the benthis model parameters table:
 
 ```{r gear_info, results="asis"}
-data(gear_widths)
+library(icesVMS)
+gear_widths <- get_benthis_parameters()
 kableExtra::kable(gear_widths)
 ```
 
@@ -133,11 +134,12 @@ bottom contact.
 
 In order to use this data a lookup table is required linking Metier level 6
 codes to the benthis gear groupings listed above.  The lookup table is given in
-the `metier_lookup` dataset and contains other gear groupings used in ICES
-outputs and was initially developed by ICES (2015).
+the `get_metier_lookup()` function from the `icesVMS` package and contains
+other gear groupings used in ICES outputs and was initially developed by
+ICES (2015).
 
 ```{r metier_lookup, results='asis'}
-data(metier_lookup)
+metier_lookup <- get_metier_lookup()
 kableExtra::kable(head(metier_lookup))
 ```
 
@@ -150,13 +152,12 @@ two lines
 # join widths and lookup
 aux_lookup <-
   gear_widths %>%
-  right_join(metier_lookup, by = c("benthis_met" = "Benthis_metiers"))
+  right_join(metier_lookup, by = c("benthisMet" = "benthisMetiers"))
 
 # add aux data to vms
 vms <-
   aux_lookup %>%
-  right_join(test_vms, by = c("LE_MET_level6", "LE_MET_level6"))
-
+  right_join(test_vms, by = c("leMetLevel6" = "LE_MET_level6"))
 ```
 
 and the gear width model is applied using the helper function `predict_gear_width`
@@ -164,13 +165,12 @@ and the gear width model is applied using the helper function `predict_gear_widt
 ```{r gearwidth}
 # calculate the gear width model
 vms$gearWidth_model <-
-  predict_gear_width(vms$gear_model, vms$gear_coefficient, vms)
-
+  predict_gear_width(vms$gearModel, vms$gearCoefficient, vms)
 ```
 
 In general, if gearwdth is available, it is used.  If average overall vessel
 length (oal) or average vessel power (kW) is available then the gear width
-model is used.  FInally if none of these are avaiable an average gear width is
+model is used.  Finally if none of these are avaiable an average gear width is
 applied.  The following code implements this
 
 ```{r fillin}
@@ -192,7 +192,7 @@ finaly, surface contact is computed using the appropriate surface contact
 model, given by the `contact_model` feild, defined as:
 
 ```{r contact_model}
-sapply(unique(gear_widths$contact_model), function(x) body(get(x)))
+sapply(unique(gear_widths$contactModel), function(x) body(get(x)))
 ```
 
 The helper function `predict_surface_contact` computes the surface contact
@@ -203,12 +203,12 @@ contact.
 ```{r surface}
 # calculate surface contact
 vms$surface <-
-  predict_surface_contact(vms$contact_model,
-                          vms$fishing_hours,
+  predict_surface_contact(vms$contactModel,
+                          vms$fishingHours,
                           vms$gearWidth_filled,
                           vms$ICES_avg_fishing_speed)
 # calculate subsurface contact
-vms$subsurface <- vms$surface * vms$subsurface_prop * .01
+vms$subsurface <- vms$surface * as.numeric(vms$subsurfaceProp) * .01
 
 ```
 
@@ -224,7 +224,7 @@ sa <-
     mutate(
       mw_fishinghours = kw_fishinghours / 1000
     ) %>%
-    group_by(year, c_square, Fishing_category_FO) %>%
+    group_by(year, c_square, fishingCategoryFo) %>%
     summarise(
       mw_fishinghours = sum(mw_fishinghours, na.rm = TRUE),
       subsurface = sum(subsurface, na.rm = TRUE),
@@ -281,4 +281,11 @@ fishing gears and c_squares.
 
 ```{r ref.label=c("join", "gearwidth", "fillin", "surface", "summary", "sar")}
 
+```
+
+### Notes
+
+This document was created using:
+```{r, eval=FALSE}
+rmarkdown::render("README.Rmd")
 ```

@@ -8,7 +8,7 @@
 #' A table.
 #'
 #' @usage
-#' vms
+#' test_vms
 #'
 #' @format
 #'

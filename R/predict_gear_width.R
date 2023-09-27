@@ -12,26 +12,31 @@
 #'
 #' @examples
 #' # very simple example of how to apply this helper function
-#' predict_gear_width("power", "avg_aol", data.frame(a = 1, b = 1, avg_aol = 1))
+#' predict_gear_width("power", "avg_aol", data.frame(firstFactor = 1, secondFactor = 1, avg_aol = 1))
 #'
 #' # use the dummy vms dataset
 #' data(test_vms)
 #'
-#' \dontrun{
+#' \donttest{
+#' # get gear widths and metier lookup from ICES DB
+#' library(icesVMS)
+#' metier_lookup <- get_metier_lookup()
+#' gear_widths <- get_benthis_parameters()
+#'
 #' # join widths and lookup
 #' library(dplyr)
 #' aux_lookup <-
 #'   gear_widths %>%
-#'   right_join(metier_lookup, by = c("benthis_met" = "Benthis_metiers"))
+#'   right_join(metier_lookup, by = c("benthisMet" = "benthisMetiers"))
 #'
 #' # add aux data to vms
 #' vms <-
 #'   aux_lookup %>%
-#'   right_join(test_vms, by = c("LE_MET_level6", "LE_MET_level6"))
+#'   right_join(test_vms, by = c("leMetLevel6" = "LE_MET_level6"))
 #'
 #' # calculate the gear width model
 #' vms$gearWidth_model <-
-#'   predict_gear_width(vms$gear_model, vms$gear_coefficient, vms)
+#'   predict_gear_width(vms$gearModel, vms$gearCoefficient, vms)
 #'
 #' }
 #' @name predict_gear_width
@@ -54,7 +59,7 @@ predict_gear_width <- function(model, coefficient, data) {
   for (mod in mods) {
     fun <- match.fun(mod)
     mwhich <- which(model == mod)
-    output[mwhich] <- with(data[mwhich,], fun(a, b, x[mwhich]))
+    output[mwhich] <- with(data[mwhich,], fun(firstFactor, secondFactor, x[mwhich]))
   }
 
   output

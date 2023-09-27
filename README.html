@@ -1,0 +1,1756 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style type="text/css">
+@font-face {
+font-family: octicons-link;
+src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
+}
+body {
+-webkit-text-size-adjust: 100%;
+text-size-adjust: 100%;
+color: #333;
+font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+font-size: 16px;
+line-height: 1.6;
+word-wrap: break-word;
+}
+a {
+background-color: transparent;
+}
+a:active,
+a:hover {
+outline: 0;
+}
+strong {
+font-weight: bold;
+}
+h1 {
+font-size: 2em;
+margin: 0.67em 0;
+}
+img {
+border: 0;
+}
+hr {
+box-sizing: content-box;
+height: 0;
+}
+pre {
+overflow: auto;
+}
+code,
+kbd,
+pre {
+font-family: monospace, monospace;
+font-size: 1em;
+}
+input {
+color: inherit;
+font: inherit;
+margin: 0;
+}
+html input[disabled] {
+cursor: default;
+}
+input {
+line-height: normal;
+}
+input[type="checkbox"] {
+box-sizing: border-box;
+padding: 0;
+}
+table {
+border-collapse: collapse;
+border-spacing: 0;
+}
+td,
+th {
+padding: 0;
+}
+* {
+box-sizing: border-box;
+}
+input {
+font: 13px / 1.4 Helvetica, arial, nimbussansl, liberationsans, freesans, clean, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+a {
+color: #4078c0;
+text-decoration: none;
+}
+a:hover,
+a:active {
+text-decoration: underline;
+}
+hr {
+height: 0;
+margin: 15px 0;
+overflow: hidden;
+background: transparent;
+border: 0;
+border-bottom: 1px solid #ddd;
+}
+hr:before {
+display: table;
+content: "";
+}
+hr:after {
+display: table;
+clear: both;
+content: "";
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+margin-top: 15px;
+margin-bottom: 15px;
+line-height: 1.1;
+}
+h1 {
+font-size: 30px;
+}
+h2 {
+font-size: 21px;
+}
+h3 {
+font-size: 16px;
+}
+h4 {
+font-size: 14px;
+}
+h5 {
+font-size: 12px;
+}
+h6 {
+font-size: 11px;
+}
+blockquote {
+margin: 0;
+}
+ul,
+ol {
+padding: 0;
+margin-top: 0;
+margin-bottom: 0;
+}
+ol ol,
+ul ol {
+list-style-type: lower-roman;
+}
+ul ul ol,
+ul ol ol,
+ol ul ol,
+ol ol ol {
+list-style-type: lower-alpha;
+}
+dd {
+margin-left: 0;
+}
+code {
+font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+font-size: 12px;
+}
+pre {
+margin-top: 0;
+margin-bottom: 0;
+font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+.select::-ms-expand {
+opacity: 0;
+}
+.octicon {
+font: normal normal normal 16px/1 octicons-link;
+display: inline-block;
+text-decoration: none;
+text-rendering: auto;
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+}
+.octicon-link:before {
+content: '\f05c';
+}
+.markdown-body:before {
+display: table;
+content: "";
+}
+.markdown-body:after {
+display: table;
+clear: both;
+content: "";
+}
+.markdown-body>*:first-child {
+margin-top: 0 !important;
+}
+.markdown-body>*:last-child {
+margin-bottom: 0 !important;
+}
+a:not([href]) {
+color: inherit;
+text-decoration: none;
+}
+.anchor {
+display: inline-block;
+padding-right: 2px;
+margin-left: -18px;
+}
+.anchor:focus {
+outline: none;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+margin-top: 1em;
+margin-bottom: 16px;
+font-weight: bold;
+line-height: 1.4;
+}
+h1 .octicon-link,
+h2 .octicon-link,
+h3 .octicon-link,
+h4 .octicon-link,
+h5 .octicon-link,
+h6 .octicon-link {
+color: #000;
+vertical-align: middle;
+visibility: hidden;
+}
+h1:hover .anchor,
+h2:hover .anchor,
+h3:hover .anchor,
+h4:hover .anchor,
+h5:hover .anchor,
+h6:hover .anchor {
+text-decoration: none;
+}
+h1:hover .anchor .octicon-link,
+h2:hover .anchor .octicon-link,
+h3:hover .anchor .octicon-link,
+h4:hover .anchor .octicon-link,
+h5:hover .anchor .octicon-link,
+h6:hover .anchor .octicon-link {
+visibility: visible;
+}
+h1 {
+padding-bottom: 0.3em;
+font-size: 2.25em;
+line-height: 1.2;
+border-bottom: 1px solid #eee;
+}
+h1 .anchor {
+line-height: 1;
+}
+h2 {
+padding-bottom: 0.3em;
+font-size: 1.75em;
+line-height: 1.225;
+border-bottom: 1px solid #eee;
+}
+h2 .anchor {
+line-height: 1;
+}
+h3 {
+font-size: 1.5em;
+line-height: 1.43;
+}
+h3 .anchor {
+line-height: 1.2;
+}
+h4 {
+font-size: 1.25em;
+}
+h4 .anchor {
+line-height: 1.2;
+}
+h5 {
+font-size: 1em;
+}
+h5 .anchor {
+line-height: 1.1;
+}
+h6 {
+font-size: 1em;
+color: #777;
+}
+h6 .anchor {
+line-height: 1.1;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table,
+pre {
+margin-top: 0;
+margin-bottom: 16px;
+}
+hr {
+height: 4px;
+padding: 0;
+margin: 16px 0;
+background-color: #e7e7e7;
+border: 0 none;
+}
+ul,
+ol {
+padding-left: 2em;
+}
+ul ul,
+ul ol,
+ol ol,
+ol ul {
+margin-top: 0;
+margin-bottom: 0;
+}
+li>p {
+margin-top: 16px;
+}
+dl {
+padding: 0;
+}
+dl dt {
+padding: 0;
+margin-top: 16px;
+font-size: 1em;
+font-style: italic;
+font-weight: bold;
+}
+dl dd {
+padding: 0 16px;
+margin-bottom: 16px;
+}
+blockquote {
+padding: 0 15px;
+color: #777;
+border-left: 4px solid #ddd;
+}
+blockquote>:first-child {
+margin-top: 0;
+}
+blockquote>:last-child {
+margin-bottom: 0;
+}
+table {
+display: block;
+width: 100%;
+overflow: auto;
+word-break: normal;
+word-break: keep-all;
+}
+table th {
+font-weight: bold;
+}
+table th,
+table td {
+padding: 6px 13px;
+border: 1px solid #ddd;
+}
+table tr {
+background-color: #fff;
+border-top: 1px solid #ccc;
+}
+table tr:nth-child(2n) {
+background-color: #f8f8f8;
+}
+img {
+max-width: 100%;
+box-sizing: content-box;
+background-color: #fff;
+}
+code {
+padding: 0;
+padding-top: 0.2em;
+padding-bottom: 0.2em;
+margin: 0;
+font-size: 85%;
+background-color: rgba(0,0,0,0.04);
+border-radius: 3px;
+}
+code:before,
+code:after {
+letter-spacing: -0.2em;
+content: "\00a0";
+}
+pre>code {
+padding: 0;
+margin: 0;
+font-size: 100%;
+word-break: normal;
+white-space: pre;
+background: transparent;
+border: 0;
+}
+.highlight {
+margin-bottom: 16px;
+}
+.highlight pre,
+pre {
+padding: 16px;
+overflow: auto;
+font-size: 85%;
+line-height: 1.45;
+background-color: #f7f7f7;
+border-radius: 3px;
+}
+.highlight pre {
+margin-bottom: 0;
+word-break: normal;
+}
+pre {
+word-wrap: normal;
+}
+pre code {
+display: inline;
+max-width: initial;
+padding: 0;
+margin: 0;
+overflow: initial;
+line-height: inherit;
+word-wrap: normal;
+background-color: transparent;
+border: 0;
+}
+pre code:before,
+pre code:after {
+content: normal;
+}
+kbd {
+display: inline-block;
+padding: 3px 5px;
+font-size: 11px;
+line-height: 10px;
+color: #555;
+vertical-align: middle;
+background-color: #fcfcfc;
+border: solid 1px #ccc;
+border-bottom-color: #bbb;
+border-radius: 3px;
+box-shadow: inset 0 -1px 0 #bbb;
+}
+.pl-c {
+color: #969896;
+}
+.pl-c1,
+.pl-s .pl-v {
+color: #0086b3;
+}
+.pl-e,
+.pl-en {
+color: #795da3;
+}
+.pl-s .pl-s1,
+.pl-smi {
+color: #333;
+}
+.pl-ent {
+color: #63a35c;
+}
+.pl-k {
+color: #a71d5d;
+}
+.pl-pds,
+.pl-s,
+.pl-s .pl-pse .pl-s1,
+.pl-sr,
+.pl-sr .pl-cce,
+.pl-sr .pl-sra,
+.pl-sr .pl-sre {
+color: #183691;
+}
+.pl-v {
+color: #ed6a43;
+}
+.pl-id {
+color: #b52a1d;
+}
+.pl-ii {
+background-color: #b52a1d;
+color: #f8f8f8;
+}
+.pl-sr .pl-cce {
+color: #63a35c;
+font-weight: bold;
+}
+.pl-ml {
+color: #693a17;
+}
+.pl-mh,
+.pl-mh .pl-en,
+.pl-ms {
+color: #1d3e81;
+font-weight: bold;
+}
+.pl-mq {
+color: #008080;
+}
+.pl-mi {
+color: #333;
+font-style: italic;
+}
+.pl-mb {
+color: #333;
+font-weight: bold;
+}
+.pl-md {
+background-color: #ffecec;
+color: #bd2c00;
+}
+.pl-mi1 {
+background-color: #eaffea;
+color: #55a532;
+}
+.pl-mdr {
+color: #795da3;
+font-weight: bold;
+}
+.pl-mo {
+color: #1d3e81;
+}
+kbd {
+display: inline-block;
+padding: 3px 5px;
+font: 11px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+line-height: 10px;
+color: #555;
+vertical-align: middle;
+background-color: #fcfcfc;
+border: solid 1px #ccc;
+border-bottom-color: #bbb;
+border-radius: 3px;
+box-shadow: inset 0 -1px 0 #bbb;
+}
+.task-list-item {
+list-style-type: none;
+}
+.task-list-item+.task-list-item {
+margin-top: 3px;
+}
+.task-list-item input {
+margin: 0 0.35em 0.25em -1.6em;
+vertical-align: middle;
+}
+:checked+.radio-label {
+z-index: 1;
+position: relative;
+border-color: #4078c0;
+}
+.sourceLine {
+display: inline-block;
+}
+code .kw { color: #000000; }
+code .dt { color: #ed6a43; }
+code .dv { color: #009999; }
+code .bn { color: #009999; }
+code .fl { color: #009999; }
+code .ch { color: #009999; }
+code .st { color: #183691; }
+code .co { color: #969896; }
+code .ot { color: #0086b3; }
+code .al { color: #a61717; }
+code .fu { color: #63a35c; }
+code .er { color: #a61717; background-color: #e3d2d2; }
+code .wa { color: #000000; }
+code .cn { color: #008080; }
+code .sc { color: #008080; }
+code .vs { color: #183691; }
+code .ss { color: #183691; }
+code .im { color: #000000; }
+code .va {color: #008080; }
+code .cf { color: #000000; }
+code .op { color: #000000; }
+code .bu { color: #000000; }
+code .ex { color: #000000; }
+code .pp { color: #999999; }
+code .at { color: #008080; }
+code .do { color: #969896; }
+code .an { color: #008080; }
+code .cv { color: #008080; }
+code .in { color: #008080; }
+</style>
+<style>
+body {
+box-sizing: border-box;
+min-width: 200px;
+max-width: 980px;
+margin: 0 auto;
+padding: 45px;
+padding-top: 0px;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+<p><a href="https://travis-ci.org/ices-tools-dev/sfdSAR"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5OCIgaGVpZ2h0PSIyMCI+PGxpbmVhckdyYWRpZW50IGlkPSJhIiB4Mj0iMCIgeTI9IjEwMCUiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2JiYiIgc3RvcC1vcGFjaXR5PSIuMSIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1vcGFjaXR5PSIuMSIvPjwvbGluZWFyR3JhZGllbnQ+PHJlY3Qgcng9IjMiIHdpZHRoPSI5OCIgaGVpZ2h0PSIyMCIgZmlsbD0iIzU1NSIvPjxyZWN0IHJ4PSIzIiB4PSIzNyIgd2lkdGg9IjYxIiBoZWlnaHQ9IjIwIiBmaWxsPSIjOWY5ZjlmIi8+PHBhdGggZmlsbD0iIzlmOWY5ZiIgZD0iTTM3IDBoNHYyMGgtNHoiLz48cmVjdCByeD0iMyIgd2lkdGg9Ijk4IiBoZWlnaHQ9IjIwIiBmaWxsPSJ1cmwoI2EpIi8+PGcgZmlsbD0iI2ZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkRlamFWdSBTYW5zLFZlcmRhbmEsR2VuZXZhLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTEiPjx0ZXh0IHg9IjE5LjUiIHk9IjE1IiBmaWxsPSIjMDEwMTAxIiBmaWxsLW9wYWNpdHk9Ii4zIj5idWlsZDwvdGV4dD48dGV4dCB4PSIxOS41IiB5PSIxNCI+YnVpbGQ8L3RleHQ+PHRleHQgeD0iNjYuNSIgeT0iMTUiIGZpbGw9IiMwMTAxMDEiIGZpbGwtb3BhY2l0eT0iLjMiPnVua25vd248L3RleHQ+PHRleHQgeD0iNjYuNSIgeT0iMTQiPnVua25vd248L3RleHQ+PC9nPjwvc3ZnPg==" alt="Build Status" /></a></p>
+<p><a href="http://ices.dk"><img align="right" alt="ICES Logo" width="17%" height="17%" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAI4AAABACAIAAABDfdibAAAACXBIWXMAAAsTAAALEwEAmpwYAAAH02lUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS42LWMxNDIgNzkuMTYwOTI0LCAyMDE3LzA3LzEzLTAxOjA2OjM5ICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1sbnM6cGhvdG9zaG9wPSJodHRwOi8vbnMuYWRvYmUuY29tL3Bob3Rvc2hvcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RFdnQ9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZUV2ZW50IyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wOkNyZWF0ZURhdGU9IjIwMTgtMDMtMTRUMTA6NTI6MzArMDE6MDAiIHhtcDpNb2RpZnlEYXRlPSIyMDE4LTAzLTE0VDExOjEwOjIzKzAxOjAwIiB4bXA6TWV0YWRhdGFEYXRlPSIyMDE4LTAzLTE0VDExOjEwOjIzKzAxOjAwIiBkYzpmb3JtYXQ9ImltYWdlL3BuZyIgcGhvdG9zaG9wOkNvbG9yTW9kZT0iMyIgcGhvdG9zaG9wOklDQ1Byb2ZpbGU9InNSR0IgSUVDNjE5NjYtMi4xIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjNlYjRmMTIzLTYzYTctY2Y0ZC04NTljLTg1OTMzMjMzNjI5NiIgeG1wTU06RG9jdW1lbnRJRD0iYWRvYmU6ZG9jaWQ6cGhvdG9zaG9wOmZmMWY4ZDgzLWU4NWQtOWU0My04MzZiLWI1MjJmY2YxZjU0YSIgeG1wTU06T3JpZ2luYWxEb2N1bWVudElEPSJ4bXAuZGlkOjg2YjA5MGMzLWFiYjQtY2E0Yy04Yzk3LWE0MDYyMzZhMTI0MiI+IDx4bXBNTTpIaXN0b3J5PiA8cmRmOlNlcT4gPHJkZjpsaSBzdEV2dDphY3Rpb249ImNyZWF0ZWQiIHN0RXZ0Omluc3RhbmNlSUQ9InhtcC5paWQ6ODZiMDkwYzMtYWJiNC1jYTRjLThjOTctYTQwNjIzNmExMjQyIiBzdEV2dDp3aGVuPSIyMDE4LTAzLTE0VDEwOjUyOjMwKzAxOjAwIiBzdEV2dDpzb2Z0d2FyZUFnZW50PSJBZG9iZSBQaG90b3Nob3AgQ0MgKFdpbmRvd3MpIi8+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJjb252ZXJ0ZWQiIHN0RXZ0OnBhcmFtZXRlcnM9ImZyb20gYXBwbGljYXRpb24vdm5kLmFkb2JlLnBob3Rvc2hvcCB0byBpbWFnZS9wbmciLz4gPHJkZjpsaSBzdEV2dDphY3Rpb249InNhdmVkIiBzdEV2dDppbnN0YW5jZUlEPSJ4bXAuaWlkOjNlYjRmMTIzLTYzYTctY2Y0ZC04NTljLTg1OTMzMjMzNjI5NiIgc3RFdnQ6d2hlbj0iMjAxOC0wMy0xNFQxMToxMDoyMyswMTowMCIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgc3RFdnQ6Y2hhbmdlZD0iLyIvPiA8L3JkZjpTZXE+IDwveG1wTU06SGlzdG9yeT4gPHhtcE1NOkluZ3JlZGllbnRzPiA8cmRmOkJhZz4gPHJkZjpsaSBzdFJlZjpsaW5rRm9ybT0iUmVmZXJlbmNlU3RyZWFtIiBzdFJlZjpmaWxlUGF0aD0iY2xvdWQtYXNzZXQ6Ly9jYy1hcGktc3RvcmFnZS5hZG9i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"></a></p>
+<h1 id="sfdsar">sfdSAR</h1>
+<p>The goal of sfdSAR is to make it easy to follow the procedure of
+calculating swept area ratio of an area of seabed by a fishing gear.</p>
+<h2 id="installation">Installation</h2>
+<p>You can install the sfdSAR using</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;sfdSAR&quot;</span>, <span class="at">repos =</span> <span class="st">&quot;https://ices-tools-prod.r-universe.dev&quot;</span>)</span></code></pre></div>
+<h2 id="usage">Usage</h2>
+<p>For a summary of the package:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">library</span>(sfdSAR)</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>?sfdSAR</span></code></pre></div>
+<h2 id="references">References</h2>
+<p>ICES 2015. Report of the Working Group on Spatial Fisheries Data
+(WGSFD), 8-12 June 2015, ICES Headquarters, Copenhagen, Denmark. ICES CM
+2015/SSGEPI:18. 150pp</p>
+<p>ICES 2016. Interim Report of the Working Group on Spatial Fisheries
+Data (WGSFD), 17-20 May 2016, Brest, France. ICES CM 2016/SSGEPI:18. 244
+pp</p>
+<p>Eigaard OR, Bastardie F, Breen M, et al. (2016) Estimating seabed
+pressure from demersal trawls, seines, and dredges based on gear design
+and dimensions. ICES Journal of Marine Science, 73:27-43</p>
+<p>Church N.J., Carter A.J., Tobin D., Edwards D., Eassom A., Cameron
+A., Johnson G.E., Robson, L.M. &amp; Webb K.E. (2016) JNCC Recommended
+Pressure Mapping Methodology 1. Abrasion: Methods paper for creating a
+geo-data layer for the pressure ‘Physical Damage (Reversible Change) -
+Penetration and/or disturbance of the substrate below the surface of the
+seabed, including abrasion’. JNCC report No. 515, JNCC, Peterborough</p>
+<h2 id="development">Development</h2>
+<p>sfdSAR is developed openly on <a href="https://github.com/ices-tools-dev/sfdSAR">GitHub</a>.</p>
+<p>Feel free to open an <a href="https://github.com/ices-tools-dev/sfdSAR/issues">issue</a> there
+if you encounter problems or have suggestions for future versions.</p>
+<h2 id="example">Example</h2>
+<p>The functions in this package are intended for one purpose: to
+compute the swept area ratio (SAR) and the subsurface SAR of a fishing
+gear, which can then be summarised over years and gear groupings.</p>
+<p>Swept Area Ratio (SAR) is computed using the algorithm described
+below. The main steps in the data processing are</p>
+<ol style="list-style-type: decimal">
+<li>Determine the gear width of the VMS record according to:
+<ul>
+<li>Where average gear widths are supplied these are used.</li>
+<li>For VMS records with missing gear widths but that have supplied
+average vessel characteristics (i.e. average overall vessel length or
+average KW engine power): use the model described in (Eigaard et al.,
+2016) to provide an estimate of gear width</li>
+<li>For VMS records with missing gear widths and missing vessel
+characteristics use a fill-in value provided by ICES (2015) based on a
+review by the JNCC or on the BENTHIS survey (Eigaard et al. 2016).</li>
+</ul></li>
+<li>Estimate swept area based on gear type, fishing hours (hours),
+fishing speed (speed) and gear width (width) for each record (ICES,
+2016, p 69), note here speed is in knots and requires to be converted to
+km per hour:
+<ul>
+<li>Trawl : hours x width x speed x 1.82</li>
+<li>Danish seine : hours / 2.591234 x (width<sup>2</sup>) / (4 π)</li>
+<li>Scottish seine : hours / 1.9125 x (1.5 x width<sup>2</sup>) / (4
+π)</li>
+</ul></li>
+<li>Accumulate across gears for each year to produce annual totals of SA
+by c-square and gear category, and finally average over years within
+gear category and c-square.</li>
+<li>Calculate SAR values by scaling by the area of the c-squares</li>
+</ol>
+<p>The code below shows how the sfdSAR functions can be used to
+calculate swept area ratio (SAR)</p>
+<p>In the following examples the <code>dplyr</code> package is used to
+simplify the data processing and a made up vms toy vms dataset
+(<code>test_vms</code>) will be used</p>
+<pre><code>library(dplyr)
+library(sfdSAR)
+## load sample vms data
+data(test_vms)</code></pre>
+<h3 id="id_1-determine-gear-widths">1. Determine gear widths</h3>
+<p>The calculation of gear with is done using the data in the benthis
+model parameters table:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="fu">library</span>(icesVMS)</span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>gear_widths <span class="ot">&lt;-</span> <span class="fu">get_benthis_parameters</span>()</span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a><span class="co">#&gt; GETing ... https://taf.ices.dk/vms/api/gearwidths</span></span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a><span class="co">#&gt; no token used</span></span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a><span class="co">#&gt; OK (HTTP 200).</span></span>
+<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a>kableExtra<span class="sc">::</span><span class="fu">kable</span>(gear_widths)</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align:right;">
+id
+</th>
+<th style="text-align:left;">
+benthisMet
+</th>
+<th style="text-align:left;">
+avKw
+</th>
+<th style="text-align:left;">
+avLoa
+</th>
+<th style="text-align:left;">
+avFspeed
+</th>
+<th style="text-align:left;">
+subsurfaceProp
+</th>
+<th style="text-align:right;">
+gearWidth
+</th>
+<th style="text-align:right;">
+firstFactor
+</th>
+<th style="text-align:right;">
+secondFactor
+</th>
+<th style="text-align:left;">
+gearModel
+</th>
+<th style="text-align:left;">
+gearCoefficient
+</th>
+<th style="text-align:left;">
+contactModel
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+OT_SPF
+</td>
+<td style="text-align:left;">
+883.8421
+</td>
+<td style="text-align:left;">
+34.38526
+</td>
+<td style="text-align:left;">
+2.9
+</td>
+<td style="text-align:left;">
+2.8
+</td>
+<td style="text-align:right;">
+0.1015789
+</td>
+<td style="text-align:right;">
+0.9652
+</td>
+<td style="text-align:right;">
+68.3890
+</td>
+<td style="text-align:left;">
+linear
+</td>
+<td style="text-align:left;">
+avg_oal
+</td>
+<td style="text-align:left;">
+trawl_contact
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+SDN_DMF
+</td>
+<td style="text-align:left;">
+167.6765
+</td>
+<td style="text-align:left;">
+18.91915
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:right;">
+6.5366439
+</td>
+<td style="text-align:right;">
+1948.8347
+</td>
+<td style="text-align:right;">
+0.2363
+</td>
+<td style="text-align:left;">
+power
+</td>
+<td style="text-align:left;">
+avg_kw
+</td>
+<td style="text-align:left;">
+danish_seine_contact
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+OT_DMF
+</td>
+<td style="text-align:left;">
+441.6667
+</td>
+<td style="text-align:left;">
+19.8
+</td>
+<td style="text-align:left;">
+3.064286
+</td>
+<td style="text-align:left;">
+7.8
+</td>
+<td style="text-align:right;">
+0.1054698
+</td>
+<td style="text-align:right;">
+9.6054
+</td>
+<td style="text-align:right;">
+0.4337
+</td>
+<td style="text-align:left;">
+power
+</td>
+<td style="text-align:left;">
+avg_kw
+</td>
+<td style="text-align:left;">
+trawl_contact
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+OT_MIX_DMF_BEN
+</td>
+<td style="text-align:left;">
+691.0217
+</td>
+<td style="text-align:left;">
+24.36896
+</td>
+<td style="text-align:left;">
+2.911111
+</td>
+<td style="text-align:left;">
+8.6
+</td>
+<td style="text-align:right;">
+0.1563055
+</td>
+<td style="text-align:right;">
+3.2141
+</td>
+<td style="text-align:right;">
+77.9812
+</td>
+<td style="text-align:left;">
+linear
+</td>
+<td style="text-align:left;">
+avg_oal
+</td>
+<td style="text-align:left;">
+trawl_contact
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+SSC_DMF
+</td>
+<td style="text-align:left;">
+481.795
+</td>
+<td style="text-align:left;">
+23.1175
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:right;">
+6.4542120
+</td>
+<td style="text-align:right;">
+4461.2700
+</td>
+<td style="text-align:right;">
+0.1176
+</td>
+<td style="text-align:left;">
+power
+</td>
+<td style="text-align:left;">
+avg_oal
+</td>
+<td style="text-align:left;">
+scottish_seine_contact
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+OT_MIX
+</td>
+<td style="text-align:left;">
+400.6089
+</td>
+<td style="text-align:left;">
+20.13774
+</td>
+<td style="text-align:left;">
+2.788636
+</td>
+<td style="text-align:left;">
+14.7
+</td>
+<td style="text-align:right;">
+0.0613659
+</td>
+<td style="text-align:right;">
+10.6608
+</td>
+<td style="text-align:right;">
+0.2921
+</td>
+<td style="text-align:left;">
+power
+</td>
+<td style="text-align:left;">
+avg_kw
+</td>
+<td style="text-align:left;">
+trawl_contact
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+OT_MIX_DMF_PEL
+</td>
+<td style="text-align:left;">
+690.3574
+</td>
+<td style="text-align:left;">
+23.745
+</td>
+<td style="text-align:left;">
+3.410385
+</td>
+<td style="text-align:left;">
+22
+</td>
+<td style="text-align:right;">
+0.0762053
+</td>
+<td style="text-align:right;">
+6.6371
+</td>
+<td style="text-align:right;">
+0.7706
+</td>
+<td style="text-align:left;">
+power
+</td>
+<td style="text-align:left;">
+avg_oal
+</td>
+<td style="text-align:left;">
+trawl_contact
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+OT_MIX_CRU_DMF
+</td>
+<td style="text-align:left;">
+473.097
+</td>
+<td style="text-align:left;">
+19.89515
+</td>
+<td style="text-align:left;">
+2.629
+</td>
+<td style="text-align:left;">
+22.9
+</td>
+<td style="text-align:right;">
+0.1139591
+</td>
+<td style="text-align:right;">
+3.9273
+</td>
+<td style="text-align:right;">
+35.8254
+</td>
+<td style="text-align:left;">
+linear
+</td>
+<td style="text-align:left;">
+avg_oal
+</td>
+<td style="text-align:left;">
+trawl_contact
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:left;">
+OT_MIX_CRU
+</td>
+<td style="text-align:left;">
+681
+</td>
+<td style="text-align:left;">
+21.685
+</td>
+<td style="text-align:left;">
+3.008889
+</td>
+<td style="text-align:left;">
+29.2
+</td>
+<td style="text-align:right;">
+0.1051172
+</td>
+<td style="text-align:right;">
+37.5272
+</td>
+<td style="text-align:right;">
+0.1490
+</td>
+<td style="text-align:left;">
+power
+</td>
+<td style="text-align:left;">
+avg_kw
+</td>
+<td style="text-align:left;">
+trawl_contact
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+OT_CRU
+</td>
+<td style="text-align:left;">
+345.5205
+</td>
+<td style="text-align:left;">
+18.67739
+</td>
+<td style="text-align:left;">
+2.47963
+</td>
+<td style="text-align:left;">
+32.1
+</td>
+<td style="text-align:right;">
+0.0789228
+</td>
+<td style="text-align:right;">
+5.1039
+</td>
+<td style="text-align:right;">
+0.4690
+</td>
+<td style="text-align:left;">
+power
+</td>
+<td style="text-align:left;">
+avg_kw
+</td>
+<td style="text-align:left;">
+trawl_contact
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:left;">
+TBB_CRU
+</td>
+<td style="text-align:left;">
+210.625
+</td>
+<td style="text-align:left;">
+20.765
+</td>
+<td style="text-align:left;">
+2.975
+</td>
+<td style="text-align:left;">
+52.2
+</td>
+<td style="text-align:right;">
+0.0171507
+</td>
+<td style="text-align:right;">
+1.4812
+</td>
+<td style="text-align:right;">
+0.4578
+</td>
+<td style="text-align:left;">
+power
+</td>
+<td style="text-align:left;">
+avg_kw
+</td>
+<td style="text-align:left;">
+trawl_contact
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:left;">
+TBB_DMF
+</td>
+<td style="text-align:left;">
+822.1667
+</td>
+<td style="text-align:left;">
+33.8866
+</td>
+<td style="text-align:left;">
+5.230851
+</td>
+<td style="text-align:left;">
+100
+</td>
+<td style="text-align:right;">
+0.0202760
+</td>
+<td style="text-align:right;">
+0.6601
+</td>
+<td style="text-align:right;">
+0.5078
+</td>
+<td style="text-align:left;">
+power
+</td>
+<td style="text-align:left;">
+avg_kw
+</td>
+<td style="text-align:left;">
+trawl_contact
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:left;">
+TBB_MOL
+</td>
+<td style="text-align:left;">
+107.1773
+</td>
+<td style="text-align:left;">
+10.14545
+</td>
+<td style="text-align:left;">
+2.428571
+</td>
+<td style="text-align:left;">
+100
+</td>
+<td style="text-align:right;">
+0.0049306
+</td>
+<td style="text-align:right;">
+0.9530
+</td>
+<td style="text-align:right;">
+0.7094
+</td>
+<td style="text-align:left;">
+power
+</td>
+<td style="text-align:left;">
+avg_oal
+</td>
+<td style="text-align:left;">
+trawl_contact
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:left;">
+DRB_MOL
+</td>
+<td style="text-align:left;">
+382.4375
+</td>
+<td style="text-align:left;">
+24.59848
+</td>
+<td style="text-align:left;">
+2.5
+</td>
+<td style="text-align:left;">
+100
+</td>
+<td style="text-align:right;">
+0.0169653
+</td>
+<td style="text-align:right;">
+0.3142
+</td>
+<td style="text-align:right;">
+1.2454
+</td>
+<td style="text-align:left;">
+power
+</td>
+<td style="text-align:left;">
+avg_oal
+</td>
+<td style="text-align:left;">
+trawl_contact
+</td>
+</tr>
+</tbody>
+</table>
+
+<p>This table comes from Eigaard et al. (2016), with additions from ICES
+(2015). And contains, for each benthis gear group, the proportion of the
+gear contact that also affects the subsurface, the estimated average
+gear width, and the coeffients and covariates of the surface contact
+model which relates the gear width, properties of the vessel (kw or
+overall length) to bottom contact.</p>
+<p>In order to use this data a lookup table is required linking Metier
+level 6 codes to the benthis gear groupings listed above. The lookup
+table is given in the <code>get_metier_lookup()</code> function from the
+<code>icesVMS</code> package and contains other gear groupings used in
+ICES outputs and was initially developed by ICES (2015).</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>metier_lookup <span class="ot">&lt;-</span> <span class="fu">get_metier_lookup</span>()</span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="co">#&gt; GETing ... https://taf.ices.dk/vms/api/MetierLookup</span></span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a><span class="co">#&gt; no token used</span></span>
+<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a><span class="co">#&gt; OK (HTTP 200).</span></span>
+<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a>kableExtra<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(metier_lookup))</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align:right;">
+id
+</th>
+<th style="text-align:left;">
+leMetLevel6
+</th>
+<th style="text-align:left;">
+fishingHours
+</th>
+<th style="text-align:left;">
+benthisMetiers
+</th>
+<th style="text-align:left;">
+benthisMetiers2016Wrong
+</th>
+<th style="text-align:left;">
+metierLevel5
+</th>
+<th style="text-align:left;">
+metierLevel4
+</th>
+<th style="text-align:left;">
+jnccGrouping
+</th>
+<th style="text-align:left;">
+fishingCategory
+</th>
+<th style="text-align:left;">
+description
+</th>
+<th style="text-align:left;">
+fishingCategoryFo
+</th>
+<th style="text-align:left;">
+ecomarClassification
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+FPO_FWS_110-156_0_0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+FPO_FWS
+</td>
+<td style="text-align:left;">
+FPO
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Static
+</td>
+<td style="text-align:left;">
+Pot
+</td>
+<td style="text-align:left;">
+Static
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+FPO_FWS_31-49_0_0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+FPO_FWS
+</td>
+<td style="text-align:left;">
+FPO
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Static
+</td>
+<td style="text-align:left;">
+Pot
+</td>
+<td style="text-align:left;">
+Static
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+FPO_FWS\_\&gt;0_0_0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+FPO_FWS
+</td>
+<td style="text-align:left;">
+FPO
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Static
+</td>
+<td style="text-align:left;">
+Pot
+</td>
+<td style="text-align:left;">
+Static
+</td>
+<td style="text-align:left;">
+Pots_and_traps
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+FPO_MCF_0-0_0_0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+FPO_MCF
+</td>
+<td style="text-align:left;">
+FPO
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Static
+</td>
+<td style="text-align:left;">
+Pot
+</td>
+<td style="text-align:left;">
+Static
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+FPO_MOL_0-0_0_0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+FPO_MOL
+</td>
+<td style="text-align:left;">
+FPO
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Static
+</td>
+<td style="text-align:left;">
+Pot
+</td>
+<td style="text-align:left;">
+Static
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+FPO_MOL_0_0_0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+FPO_MOL
+</td>
+<td style="text-align:left;">
+FPO
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Static
+</td>
+<td style="text-align:left;">
+Pot
+</td>
+<td style="text-align:left;">
+Static
+</td>
+<td style="text-align:left;">
+Pots_and_traps
+</td>
+</tr>
+</tbody>
+</table>
+
+<p>Linking the gearwidths and contact model information is done with the
+following two lines</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="co"># join widths and lookup</span></span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>aux_lookup <span class="ot">&lt;-</span></span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a>  gear_widths <span class="sc">%&gt;%</span></span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a>  <span class="fu">right_join</span>(metier_lookup, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;benthisMet&quot;</span> <span class="ot">=</span> <span class="st">&quot;benthisMetiers&quot;</span>))</span>
+<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a><span class="co"># add aux data to vms</span></span>
+<span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a>vms <span class="ot">&lt;-</span></span>
+<span id="cb6-8"><a href="#cb6-8" tabindex="-1"></a>  aux_lookup <span class="sc">%&gt;%</span></span>
+<span id="cb6-9"><a href="#cb6-9" tabindex="-1"></a>  <span class="fu">right_join</span>(test_vms, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;leMetLevel6&quot;</span> <span class="ot">=</span> <span class="st">&quot;LE_MET_level6&quot;</span>))</span></code></pre></div>
+<p>and the gear width model is applied using the helper function
+<code>predict_gear_width</code></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="co"># calculate the gear width model</span></span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>vms<span class="sc">$</span>gearWidth_model <span class="ot">&lt;-</span></span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a>  <span class="fu">predict_gear_width</span>(vms<span class="sc">$</span>gearModel, vms<span class="sc">$</span>gearCoefficient, vms)</span></code></pre></div>
+<p>In general, if gearwdth is available, it is used. If average overall
+vessel length (oal) or average vessel power (kW) is available then the
+gear width model is used. Finally if none of these are avaiable an
+average gear width is applied. The following code implements this</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="co"># do the fillin for gear width:</span></span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a><span class="co"># select provided average gear width, then modelled gear with, then benthis</span></span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a><span class="co"># average if no kw or aol supplied</span></span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a>vms<span class="sc">$</span>gearWidth_filled <span class="ot">&lt;-</span></span>
+<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a>  <span class="fu">with</span>(vms,</span>
+<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a>    <span class="fu">ifelse</span>(<span class="sc">!</span><span class="fu">is.na</span>(avg_gearWidth), avg_gearWidth <span class="sc">/</span> <span class="dv">1000</span>,</span>
+<span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a>      <span class="fu">ifelse</span>(<span class="sc">!</span><span class="fu">is.na</span>(gearWidth_model), gearWidth_model <span class="sc">/</span> <span class="dv">1000</span>,</span>
+<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a>        gearWidth)</span>
+<span id="cb8-9"><a href="#cb8-9" tabindex="-1"></a>    ))</span></code></pre></div>
+<h3 id="predicting-surface-contact">Predicting surface contact</h3>
+<p>finaly, surface contact is computed using the appropriate surface
+contact model, given by the <code>contact_model</code> feild, defined
+as:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="fu">sapply</span>(<span class="fu">unique</span>(gear_widths<span class="sc">$</span>contactModel), <span class="cf">function</span>(x) <span class="fu">body</span>(<span class="fu">get</span>(x)))</span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="co">#&gt; $trawl_contact</span></span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a><span class="co">#&gt; {</span></span>
+<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a><span class="co">#&gt;     fishing_hours * gear_width * fishing_speed * 1.852</span></span>
+<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a><span class="co">#&gt; }</span></span>
+<span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb9-7"><a href="#cb9-7" tabindex="-1"></a><span class="co">#&gt; $danish_seine_contact</span></span>
+<span id="cb9-8"><a href="#cb9-8" tabindex="-1"></a><span class="co">#&gt; {</span></span>
+<span id="cb9-9"><a href="#cb9-9" tabindex="-1"></a><span class="co">#&gt;     fishing_hours/2.591234 * gear_width^2/pi/4</span></span>
+<span id="cb9-10"><a href="#cb9-10" tabindex="-1"></a><span class="co">#&gt; }</span></span>
+<span id="cb9-11"><a href="#cb9-11" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb9-12"><a href="#cb9-12" tabindex="-1"></a><span class="co">#&gt; $scottish_seine_contact</span></span>
+<span id="cb9-13"><a href="#cb9-13" tabindex="-1"></a><span class="co">#&gt; {</span></span>
+<span id="cb9-14"><a href="#cb9-14" tabindex="-1"></a><span class="co">#&gt;     fishing_hours/1.9125 * gear_width^2/pi/4 * 1.5</span></span>
+<span id="cb9-15"><a href="#cb9-15" tabindex="-1"></a><span class="co">#&gt; }</span></span></code></pre></div>
+<p>The helper function <code>predict_surface_contact</code> computes the
+surface contact (usage shown below). The feild
+<code>subsurface_prop</code> which has come from the
+<code>gear_width</code> dataset can be used to compute subsurface
+contact from the surface contact.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="co"># calculate surface contact</span></span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>vms<span class="sc">$</span>surface <span class="ot">&lt;-</span></span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a>  <span class="fu">predict_surface_contact</span>(vms<span class="sc">$</span>contactModel,</span>
+<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a>                          vms<span class="sc">$</span>fishingHours,</span>
+<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a>                          vms<span class="sc">$</span>gearWidth_filled,</span>
+<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a>                          vms<span class="sc">$</span>ICES_avg_fishing_speed)</span>
+<span id="cb10-7"><a href="#cb10-7" tabindex="-1"></a><span class="co"># calculate subsurface contact</span></span>
+<span id="cb10-8"><a href="#cb10-8" tabindex="-1"></a>vms<span class="sc">$</span>subsurface <span class="ot">&lt;-</span> vms<span class="sc">$</span>surface <span class="sc">*</span> <span class="fu">as.numeric</span>(vms<span class="sc">$</span>subsurfaceProp) <span class="sc">*</span> .<span class="dv">01</span></span></code></pre></div>
+<h3 id="summarising-accross-months-etc">Summarising accross months
+etc.</h3>
+<p>Normally it is required to summarise the surface quantities, which
+can be done like this</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="co"># compute summaries of swept area over groups</span></span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a>sa <span class="ot">&lt;-</span></span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a>  vms <span class="sc">%&gt;%</span></span>
+<span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
+<span id="cb11-5"><a href="#cb11-5" tabindex="-1"></a>      <span class="at">mw_fishinghours =</span> kw_fishinghours <span class="sc">/</span> <span class="dv">1000</span></span>
+<span id="cb11-6"><a href="#cb11-6" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
+<span id="cb11-7"><a href="#cb11-7" tabindex="-1"></a>    <span class="fu">group_by</span>(year, c_square, fishingCategoryFo) <span class="sc">%&gt;%</span></span>
+<span id="cb11-8"><a href="#cb11-8" tabindex="-1"></a>    <span class="fu">summarise</span>(</span>
+<span id="cb11-9"><a href="#cb11-9" tabindex="-1"></a>      <span class="at">mw_fishinghours =</span> <span class="fu">sum</span>(mw_fishinghours, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb11-10"><a href="#cb11-10" tabindex="-1"></a>      <span class="at">subsurface =</span> <span class="fu">sum</span>(subsurface, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb11-11"><a href="#cb11-11" tabindex="-1"></a>      <span class="at">surface =</span> <span class="fu">sum</span>(surface, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb11-12"><a href="#cb11-12" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
+<span id="cb11-13"><a href="#cb11-13" tabindex="-1"></a>  ungroup <span class="sc">%&gt;%</span></span>
+<span id="cb11-14"><a href="#cb11-14" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb11-15"><a href="#cb11-15" tabindex="-1"></a>    <span class="at">lat =</span> <span class="fu">csquare_lat</span>(c_square),</span>
+<span id="cb11-16"><a href="#cb11-16" tabindex="-1"></a>    <span class="at">lon =</span> <span class="fu">csquare_lon</span>(c_square)</span>
+<span id="cb11-17"><a href="#cb11-17" tabindex="-1"></a>  )</span>
+<span id="cb11-18"><a href="#cb11-18" tabindex="-1"></a><span class="co">#&gt; `summarise()` has grouped output by &#39;year&#39;, &#39;c_square&#39;. You can override using the `.groups` argument.</span></span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a>sa</span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a><span class="co">#&gt; # A tibble: 3 x 8</span></span>
+<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a><span class="co">#&gt;    year c_square       fishingCategoryFo mw_fishinghours subsurface surface   lat   lon</span></span>
+<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a><span class="co">#&gt;   &lt;dbl&gt; &lt;chr&gt;          &lt;chr&gt;                       &lt;dbl&gt;      &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a><span class="co">#&gt; 1  2020 7400:361:206:4 Otter                      15.7            0       0  46.1 -1.68</span></span>
+<span id="cb12-6"><a href="#cb12-6" tabindex="-1"></a><span class="co">#&gt; 2  2020 7400:361:206:4 Static                     10.8            0       0  46.1 -1.68</span></span>
+<span id="cb12-7"><a href="#cb12-7" tabindex="-1"></a><span class="co">#&gt; 3  2020 7400:361:206:4 &lt;NA&gt;                        0.903          0       0  46.1 -1.68</span></span></code></pre></div>
+<h3 id="computing-swept-area-ratio-sar">Computing Swept Area Ratio
+(SAR)</h3>
+<p>In the code below, SAR is calculated for each year, then averaged
+over years, resulting in a dataset of averarage SAR per c_square. Note
+that, because grouping is taking place over <code>c_square</code> the
+summation in the first <code>group_by</code> section is equivalent to
+<code>sum(surface) / area</code>. The second grouping section computes
+averages for each <code>c_square</code> over all years in the
+dataset.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="co"># compute swept area ratio per year and c_square then average over years</span></span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a>sar <span class="ot">&lt;-</span></span>
+<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a>  sa <span class="sc">%&gt;%</span></span>
+<span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
+<span id="cb13-5"><a href="#cb13-5" tabindex="-1"></a>      <span class="at">area =</span> <span class="fu">csquare_area</span>(c_square)</span>
+<span id="cb13-6"><a href="#cb13-6" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
+<span id="cb13-7"><a href="#cb13-7" tabindex="-1"></a>    <span class="fu">group_by</span>(c_square, year) <span class="sc">%&gt;%</span></span>
+<span id="cb13-8"><a href="#cb13-8" tabindex="-1"></a>      <span class="fu">summarise</span>(</span>
+<span id="cb13-9"><a href="#cb13-9" tabindex="-1"></a>        <span class="at">surface_sar =</span> <span class="fu">sum</span>(surface <span class="sc">/</span> area, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb13-10"><a href="#cb13-10" tabindex="-1"></a>        <span class="at">subsurface_sar =</span> <span class="fu">sum</span>(subsurface <span class="sc">/</span> area, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb13-11"><a href="#cb13-11" tabindex="-1"></a>      ) <span class="sc">%&gt;%</span></span>
+<span id="cb13-12"><a href="#cb13-12" tabindex="-1"></a>    <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb13-13"><a href="#cb13-13" tabindex="-1"></a>    <span class="fu">group_by</span>(c_square) <span class="sc">%&gt;%</span></span>
+<span id="cb13-14"><a href="#cb13-14" tabindex="-1"></a>    <span class="fu">summarise</span>(</span>
+<span id="cb13-15"><a href="#cb13-15" tabindex="-1"></a>      <span class="at">surface_sar =</span> <span class="fu">mean</span>(surface_sar, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb13-16"><a href="#cb13-16" tabindex="-1"></a>      <span class="at">subsurface_sar =</span> <span class="fu">mean</span>(subsurface_sar, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb13-17"><a href="#cb13-17" tabindex="-1"></a>    )</span>
+<span id="cb13-18"><a href="#cb13-18" tabindex="-1"></a><span class="co">#&gt; `summarise()` has grouped output by &#39;c_square&#39;. You can override using the `.groups` argument.</span></span>
+<span id="cb13-19"><a href="#cb13-19" tabindex="-1"></a>sar</span>
+<span id="cb13-20"><a href="#cb13-20" tabindex="-1"></a><span class="co">#&gt; # A tibble: 1 x 3</span></span>
+<span id="cb13-21"><a href="#cb13-21" tabindex="-1"></a><span class="co">#&gt;   c_square       surface_sar subsurface_sar</span></span>
+<span id="cb13-22"><a href="#cb13-22" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt;                &lt;dbl&gt;          &lt;dbl&gt;</span></span>
+<span id="cb13-23"><a href="#cb13-23" tabindex="-1"></a><span class="co">#&gt; 1 7400:361:206:4           0              0</span></span></code></pre></div>
+<h3 id="all-in-one">All in one</h3>
+<p>The steps described above are combined into one code block for
+convienience. This code can be applied to a larger dataset to covering a
+range of years, fishing gears and c_squares.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="co"># join widths and lookup</span></span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a>aux_lookup <span class="ot">&lt;-</span></span>
+<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a>  gear_widths <span class="sc">%&gt;%</span></span>
+<span id="cb14-4"><a href="#cb14-4" tabindex="-1"></a>  <span class="fu">right_join</span>(metier_lookup, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;benthisMet&quot;</span> <span class="ot">=</span> <span class="st">&quot;benthisMetiers&quot;</span>))</span>
+<span id="cb14-5"><a href="#cb14-5" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" tabindex="-1"></a><span class="co"># add aux data to vms</span></span>
+<span id="cb14-7"><a href="#cb14-7" tabindex="-1"></a>vms <span class="ot">&lt;-</span></span>
+<span id="cb14-8"><a href="#cb14-8" tabindex="-1"></a>  aux_lookup <span class="sc">%&gt;%</span></span>
+<span id="cb14-9"><a href="#cb14-9" tabindex="-1"></a>  <span class="fu">right_join</span>(test_vms, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;leMetLevel6&quot;</span> <span class="ot">=</span> <span class="st">&quot;LE_MET_level6&quot;</span>))</span>
+<span id="cb14-10"><a href="#cb14-10" tabindex="-1"></a><span class="co"># calculate the gear width model</span></span>
+<span id="cb14-11"><a href="#cb14-11" tabindex="-1"></a>vms<span class="sc">$</span>gearWidth_model <span class="ot">&lt;-</span></span>
+<span id="cb14-12"><a href="#cb14-12" tabindex="-1"></a>  <span class="fu">predict_gear_width</span>(vms<span class="sc">$</span>gearModel, vms<span class="sc">$</span>gearCoefficient, vms)</span>
+<span id="cb14-13"><a href="#cb14-13" tabindex="-1"></a><span class="co"># do the fillin for gear width:</span></span>
+<span id="cb14-14"><a href="#cb14-14" tabindex="-1"></a><span class="co"># select provided average gear width, then modelled gear with, then benthis</span></span>
+<span id="cb14-15"><a href="#cb14-15" tabindex="-1"></a><span class="co"># average if no kw or aol supplied</span></span>
+<span id="cb14-16"><a href="#cb14-16" tabindex="-1"></a>vms<span class="sc">$</span>gearWidth_filled <span class="ot">&lt;-</span></span>
+<span id="cb14-17"><a href="#cb14-17" tabindex="-1"></a>  <span class="fu">with</span>(vms,</span>
+<span id="cb14-18"><a href="#cb14-18" tabindex="-1"></a>    <span class="fu">ifelse</span>(<span class="sc">!</span><span class="fu">is.na</span>(avg_gearWidth), avg_gearWidth <span class="sc">/</span> <span class="dv">1000</span>,</span>
+<span id="cb14-19"><a href="#cb14-19" tabindex="-1"></a>      <span class="fu">ifelse</span>(<span class="sc">!</span><span class="fu">is.na</span>(gearWidth_model), gearWidth_model <span class="sc">/</span> <span class="dv">1000</span>,</span>
+<span id="cb14-20"><a href="#cb14-20" tabindex="-1"></a>        gearWidth)</span>
+<span id="cb14-21"><a href="#cb14-21" tabindex="-1"></a>    ))</span>
+<span id="cb14-22"><a href="#cb14-22" tabindex="-1"></a></span>
+<span id="cb14-23"><a href="#cb14-23" tabindex="-1"></a><span class="co"># calculate surface contact</span></span>
+<span id="cb14-24"><a href="#cb14-24" tabindex="-1"></a>vms<span class="sc">$</span>surface <span class="ot">&lt;-</span></span>
+<span id="cb14-25"><a href="#cb14-25" tabindex="-1"></a>  <span class="fu">predict_surface_contact</span>(vms<span class="sc">$</span>contactModel,</span>
+<span id="cb14-26"><a href="#cb14-26" tabindex="-1"></a>                          vms<span class="sc">$</span>fishingHours,</span>
+<span id="cb14-27"><a href="#cb14-27" tabindex="-1"></a>                          vms<span class="sc">$</span>gearWidth_filled,</span>
+<span id="cb14-28"><a href="#cb14-28" tabindex="-1"></a>                          vms<span class="sc">$</span>ICES_avg_fishing_speed)</span>
+<span id="cb14-29"><a href="#cb14-29" tabindex="-1"></a><span class="co"># calculate subsurface contact</span></span>
+<span id="cb14-30"><a href="#cb14-30" tabindex="-1"></a>vms<span class="sc">$</span>subsurface <span class="ot">&lt;-</span> vms<span class="sc">$</span>surface <span class="sc">*</span> <span class="fu">as.numeric</span>(vms<span class="sc">$</span>subsurfaceProp) <span class="sc">*</span> .<span class="dv">01</span></span>
+<span id="cb14-31"><a href="#cb14-31" tabindex="-1"></a></span>
+<span id="cb14-32"><a href="#cb14-32" tabindex="-1"></a><span class="co"># compute summaries of swept area over groups</span></span>
+<span id="cb14-33"><a href="#cb14-33" tabindex="-1"></a>sa <span class="ot">&lt;-</span></span>
+<span id="cb14-34"><a href="#cb14-34" tabindex="-1"></a>  vms <span class="sc">%&gt;%</span></span>
+<span id="cb14-35"><a href="#cb14-35" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
+<span id="cb14-36"><a href="#cb14-36" tabindex="-1"></a>      <span class="at">mw_fishinghours =</span> kw_fishinghours <span class="sc">/</span> <span class="dv">1000</span></span>
+<span id="cb14-37"><a href="#cb14-37" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
+<span id="cb14-38"><a href="#cb14-38" tabindex="-1"></a>    <span class="fu">group_by</span>(year, c_square, fishingCategoryFo) <span class="sc">%&gt;%</span></span>
+<span id="cb14-39"><a href="#cb14-39" tabindex="-1"></a>    <span class="fu">summarise</span>(</span>
+<span id="cb14-40"><a href="#cb14-40" tabindex="-1"></a>      <span class="at">mw_fishinghours =</span> <span class="fu">sum</span>(mw_fishinghours, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb14-41"><a href="#cb14-41" tabindex="-1"></a>      <span class="at">subsurface =</span> <span class="fu">sum</span>(subsurface, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb14-42"><a href="#cb14-42" tabindex="-1"></a>      <span class="at">surface =</span> <span class="fu">sum</span>(surface, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb14-43"><a href="#cb14-43" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
+<span id="cb14-44"><a href="#cb14-44" tabindex="-1"></a>  ungroup <span class="sc">%&gt;%</span></span>
+<span id="cb14-45"><a href="#cb14-45" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb14-46"><a href="#cb14-46" tabindex="-1"></a>    <span class="at">lat =</span> <span class="fu">csquare_lat</span>(c_square),</span>
+<span id="cb14-47"><a href="#cb14-47" tabindex="-1"></a>    <span class="at">lon =</span> <span class="fu">csquare_lon</span>(c_square)</span>
+<span id="cb14-48"><a href="#cb14-48" tabindex="-1"></a>  )</span>
+<span id="cb14-49"><a href="#cb14-49" tabindex="-1"></a><span class="co">#&gt; `summarise()` has grouped output by &#39;year&#39;, &#39;c_square&#39;. You can override using the `.groups` argument.</span></span>
+<span id="cb14-50"><a href="#cb14-50" tabindex="-1"></a></span>
+<span id="cb14-51"><a href="#cb14-51" tabindex="-1"></a><span class="co"># compute swept area ratio per year and c_square then average over years</span></span>
+<span id="cb14-52"><a href="#cb14-52" tabindex="-1"></a>sar <span class="ot">&lt;-</span></span>
+<span id="cb14-53"><a href="#cb14-53" tabindex="-1"></a>  sa <span class="sc">%&gt;%</span></span>
+<span id="cb14-54"><a href="#cb14-54" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
+<span id="cb14-55"><a href="#cb14-55" tabindex="-1"></a>      <span class="at">area =</span> <span class="fu">csquare_area</span>(c_square)</span>
+<span id="cb14-56"><a href="#cb14-56" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
+<span id="cb14-57"><a href="#cb14-57" tabindex="-1"></a>    <span class="fu">group_by</span>(c_square, year) <span class="sc">%&gt;%</span></span>
+<span id="cb14-58"><a href="#cb14-58" tabindex="-1"></a>      <span class="fu">summarise</span>(</span>
+<span id="cb14-59"><a href="#cb14-59" tabindex="-1"></a>        <span class="at">surface_sar =</span> <span class="fu">sum</span>(surface <span class="sc">/</span> area, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb14-60"><a href="#cb14-60" tabindex="-1"></a>        <span class="at">subsurface_sar =</span> <span class="fu">sum</span>(subsurface <span class="sc">/</span> area, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb14-61"><a href="#cb14-61" tabindex="-1"></a>      ) <span class="sc">%&gt;%</span></span>
+<span id="cb14-62"><a href="#cb14-62" tabindex="-1"></a>    <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb14-63"><a href="#cb14-63" tabindex="-1"></a>    <span class="fu">group_by</span>(c_square) <span class="sc">%&gt;%</span></span>
+<span id="cb14-64"><a href="#cb14-64" tabindex="-1"></a>    <span class="fu">summarise</span>(</span>
+<span id="cb14-65"><a href="#cb14-65" tabindex="-1"></a>      <span class="at">surface_sar =</span> <span class="fu">mean</span>(surface_sar, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb14-66"><a href="#cb14-66" tabindex="-1"></a>      <span class="at">subsurface_sar =</span> <span class="fu">mean</span>(subsurface_sar, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb14-67"><a href="#cb14-67" tabindex="-1"></a>    )</span>
+<span id="cb14-68"><a href="#cb14-68" tabindex="-1"></a><span class="co">#&gt; `summarise()` has grouped output by &#39;c_square&#39;. You can override using the `.groups` argument.</span></span>
+<span id="cb14-69"><a href="#cb14-69" tabindex="-1"></a>sar</span>
+<span id="cb14-70"><a href="#cb14-70" tabindex="-1"></a><span class="co">#&gt; # A tibble: 1 x 3</span></span>
+<span id="cb14-71"><a href="#cb14-71" tabindex="-1"></a><span class="co">#&gt;   c_square       surface_sar subsurface_sar</span></span>
+<span id="cb14-72"><a href="#cb14-72" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt;                &lt;dbl&gt;          &lt;dbl&gt;</span></span>
+<span id="cb14-73"><a href="#cb14-73" tabindex="-1"></a><span class="co">#&gt; 1 7400:361:206:4           0              0</span></span></code></pre></div>
+
+</body>
+</html>

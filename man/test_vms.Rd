@@ -4,7 +4,8 @@
 \name{test_vms}
 \alias{test_vms}
 \title{Lookup table to aggregate metier level 6 gear groupings}
-\format{Data frame with containing 17 columns:
+\format{
+Data frame with containing 17 columns:
 \tabular{ll}{
 \code{recordtype} \tab Metier level 6 gear code\cr
 \code{country} \tab Benthis metier used to define bottom fishing pressure\cr
@@ -23,12 +24,13 @@
 \code{totvalue} \tab description ...\cr
 \code{ICES_avg_fishing_speed} \tab description ...\cr
 \code{avg_gearWidth} \tab description ...
-}}
+}
+}
 \source{
 Reference to ices data call and format?
 }
 \usage{
-vms
+test_vms
 }
 \description{
 A table.
